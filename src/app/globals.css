@@ -465,7 +465,7 @@
     position: relative;
     display: block;
   }
-  .journey-road svg {
+  .journey-road > svg {
     position: absolute;
     bottom: calc(var(--lane) / 2 + 12px);
     left: -1px;
@@ -473,7 +473,7 @@
     height: calc(var(--amp) * 2);
     overflow: visible;
   }
-  .journey-road path {
+  .journey-road > svg path {
     fill: none;
     vector-effect: non-scaling-stroke;
   }
