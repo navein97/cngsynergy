@@ -29,6 +29,6 @@ export const navigation = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us/" },
   { label: "Our Services", href: "/our-service/" },
-  { label: "ProHayat 180", href: "/prodrive-180/" },
+  { label: "ProHayat 180", href: "/prohayat-180/" },
   { label: "Contact Us", href: "/contact-us/" },
 ] as const;

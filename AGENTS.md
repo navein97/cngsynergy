@@ -26,7 +26,8 @@ TypeScript, Tailwind CSS v4, deployed on Vercel at cngsynergy.com.
 | Videos | `public/videos/` |
 
 Pages and their addresses (keep these, Google has them indexed):
-`/`, `/about-us/`, `/our-service/`, `/prodrive-180/`, `/contact-us/`.
+`/`, `/about-us/`, `/our-service/`, `/prohayat-180/`, `/contact-us/`.
+The old `/prodrive-180/` address redirects to `/prohayat-180/` (see `next.config.ts`).
 
 ## Rules
 
@@ -37,8 +38,39 @@ Pages and their addresses (keep these, Google has them indexed):
 - Wrap section content in `<div className="shell">` for the standard page width.
 - Dark sections get the `on-dark` class so keyboard focus outlines stay visible.
 - The logo PNG has white lettering, so it only goes on `bg-ink`.
-- The ProDrive 180 page has its own palette (`pd-*` colours). Do not mix it into other pages.
+- The ProHayat 180 page has its own palette (`pd-*` colours). Do not mix it into other pages.
 - New icons go in `src/components/Icon.tsx`.
+
+## Scroll story
+
+The home page and the ProHayat 180 page react to scrolling. There are no animation
+libraries. One small component does the work:
+
+- `src/components/ScrollProgress.tsx` wraps a block and keeps a CSS variable `--p`
+  on it: 0 as the block comes into view, 1 once it has been scrolled through.
+- The effects are plain CSS in `globals.css` (section "Scroll story") that read `--p`:
+  `lit` (paragraph lights up word by word, used through `LitText.tsx`), `photo-open`
+  (`<PhotoBand opensOnScroll />`), `unfold` (items switch on one after another),
+  `ticks` (check marks draw themselves), `days` and `meter-fill` (ProHayat 180).
+- For `unfold`, `ticks` and `days`, set `--n` (number of items) on the list and
+  `--i` (0, 1, 2...) on each item. Copy an existing use in `src/app/page.tsx`.
+- With reduced motion switched on, or without JavaScript, `--p` stays at 1 and
+  everything shows in its finished state. Keep it that way: never hide content
+  behind an effect.
+
+The route on the home page is `src/components/Journey.tsx`. It pins to the screen
+and slides the road sideways as the visitor scrolls. Its stops are `home.pillars`
+in `src/content/home.ts`; add or remove a stop there (each needs an `icon`). On
+short screens, or if a stop's text does not fit, it falls back to a plain list
+by itself.
+
+## ProHayat 180 scenarios
+
+The vehicle buttons, the phone and the dashboard are `src/components/ProHayatDemo.tsx`.
+The scenarios are in `src/content/prohayat.ts` under `vehicles.scenarios`: one per
+vehicle button, each with a question, options (exactly one `correct: true`), the
+coaching text and a `scene` drawing. To add a vehicle, add a scenario there. A new
+`scene` name also needs a drawing in `SceneDrawing` inside `ProHayatDemo.tsx`.
 
 ## Adding a new page
 

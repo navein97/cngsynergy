@@ -17,9 +17,22 @@ export const home = {
     body: "CNG Synergy specializes in consultancy services rooted in local logistics practices and real-world scenarios particularly in trucking and warehouse. Combining academic and industry expertise, we provide practical solutions to optimize transportation and warehouse operations, delivering actionable insights to boost business efficiency and performance.",
   },
 
+  /**
+   * The route section: the four stops the red consignment travels through as
+   * the visitor scrolls. `icon` is a name from src/components/Icon.tsx.
+   */
+  route: {
+    title: "Where CNG Synergy fits in your logistics",
+    previous: "Previous stop",
+    next: "Next stop",
+    more: "Learn more",
+    moreHref: "/about-us/",
+  },
+
   pillars: [
     {
       title: "Our Expertise",
+      icon: "truck",
       body: "We specialize in two core logistics areas:",
       list: [
         "**Trucking & Goods Distribution:** Optimizing the movement of goods to ensure timely and cost-efficient deliveries.",
@@ -28,14 +41,17 @@ export const home = {
     },
     {
       title: "How We Add Value",
+      icon: "strategy",
       body: "Through research and hands-on knowledge sharing, we enhance businesses’ understanding of logistics practices. Our consultancy bridges the gap between theory and industry realities, delivering solutions that improve operational effectiveness and efficiency, ensuring businesses remain competitive in a fast-evolving logistics landscape.",
     },
     {
       title: "Who We Support",
+      icon: "factory",
       body: "We work with manufacturers, logistics service providers, and organizations seeking to improve logistics efficiency and gain operational advantages.",
     },
     {
       title: "Why Partner with Us",
+      icon: "advisory",
       body: "At CNG Synergy, we offer customized consultancy solutions to optimize transportation, distribution, and warehouse operations. With deep local logistics knowledge and extensive industry experience, we identify inefficiencies, streamline processes, and deliver actionable strategies to boost your business performance. Our insights bridge the gap between industry best practices and your unique challenges, ensuring continuous improvement. Partner with us to make your logistics operations more efficient, cost-effective, and primed for long-term success.",
     },
   ],
@@ -80,6 +96,15 @@ export const home = {
       "Provide alternative perspectives and practices for sustainable growth in a competitive and dynamic transport and logistics environment.",
       "Ensure that best practices are shared across teams, facilitating a seamless transition for new employees, continuous improvement in operations.",
     ],
+  },
+
+  /** Short previews near the end of the home page. Each links to its full page. */
+  servicesPreview: {
+    link: "See all services",
+  },
+  prohayatPreview: {
+    name: "ProHayat 180™",
+    link: "See ProHayat 180",
   },
 } as const;
 

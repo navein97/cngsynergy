@@ -60,6 +60,15 @@
 }
 
 @layer base {
+  :root {
+    /* Height of the sticky site header. Keep in step with SiteHeader.tsx. */
+    --header-h: 4.5rem;
+  }
+  @media (min-width: 64rem) {
+    :root {
+      --header-h: 5.5rem;
+    }
+  }
   html {
     scroll-behavior: smooth;
   }
@@ -183,5 +192,345 @@
   }
   .btn-whatsapp:hover {
     background: #096236;
+  }
+
+  /*
+    Scroll story.
+    <ScrollProgress> sets --p on its element: 0 as the block starts coming
+    into view, 1 once it has been scrolled through. Everything below reads it.
+    With reduced motion on, or no JavaScript, --p stays at 1 (finished state).
+  */
+  .scroll-scene {
+    --p: 1;
+  }
+
+  /* Paragraph that lights up word by word (LitText). --n words, --i this word. */
+  .lit > span {
+    opacity: clamp(0.22, calc((var(--p) * (var(--n) + 8) - var(--i)) / 8), 1);
+  }
+
+  /* Photo that opens out to full width (PhotoBand). */
+  .photo-open {
+    clip-path: inset(calc((1 - var(--p)) * 16%) calc((1 - var(--p)) * 9%));
+  }
+  .photo-open img {
+    scale: calc(1.2 - var(--p) * 0.2);
+  }
+
+  /* Group whose items switch on one after another. --n items, --i this item. */
+  .unfold > * {
+    --t: clamp(0, calc(var(--p) * (var(--n) + 1) - var(--i)), 1);
+    position: relative;
+  }
+  .unfold > *::before {
+    content: "";
+    position: absolute;
+    inset: -2px 0 auto;
+    height: 3px;
+    background: var(--color-signal);
+    transform: scaleX(var(--t));
+    transform-origin: left;
+  }
+  .unfold > * > * {
+    opacity: calc(0.3 + 0.7 * var(--t));
+  }
+
+  /* Checklist whose ticks draw themselves. --n items, --i this item. */
+  .ticks > li {
+    --t: clamp(0, calc(var(--p) * (var(--n) + 0.5) - var(--i)), 1);
+  }
+  .ticks > li > span {
+    opacity: calc(0.35 + 0.65 * var(--t));
+  }
+  .ticks > li path {
+    stroke-dasharray: 21;
+    stroke-dashoffset: calc(21 * (1 - var(--t)));
+  }
+
+  /*
+    Row of day squares that switch on left to right (ProHayat 180 hero).
+    --n days, --i this day. "fade" dims towards the last day, "keep" stays lit.
+  */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 3px;
+  }
+  .days > span {
+    --on: clamp(0, calc(var(--p) * (var(--n) + 2) - var(--i)), 1);
+    aspect-ratio: 1 / 2;
+    border-radius: 1.5px;
+    background: currentColor;
+  }
+  .days-fade > span {
+    opacity: calc(0.14 + 0.86 * var(--on) * (1 - (var(--i) + 1) / var(--n)));
+  }
+  .days-keep > span {
+    opacity: calc(0.14 + 0.86 * var(--on));
+  }
+
+  /* Bar that fills as its block scrolls into view. */
+  .meter-fill {
+    transform: scaleX(clamp(0, calc(var(--p) * 1.25), 1));
+    transform-origin: left;
+  }
+
+  /*
+    The route (Journey.tsx, home page).
+    Default layout is a plain list of stops. Journey.tsx adds `data-pinned`
+    when the screen is tall enough and motion is allowed; the section then
+    pins and the road slides sideways. --u is the current stop (0, 1, 2...),
+    --k is each stop's own number.
+  */
+  .journey {
+    --lane: 34px; /* road width */
+    --amp: 10px; /* how far the road rises and dips */
+    --stem: 10px;
+    --sign: 3.125rem;
+    --road-h: 8.25rem;
+  }
+  @media (min-width: 48rem) {
+    .journey {
+      --lane: 44px;
+      --amp: 16px;
+      --stem: 14px;
+      --sign: 4.25rem;
+      --road-h: 11.25rem;
+    }
+  }
+  .journey-nav,
+  .journey-road,
+  .journey-load {
+    display: none;
+  }
+  .journey-stage {
+    padding-block: 2rem;
+  }
+  .journey-panel {
+    padding-block: 2.5rem;
+  }
+  .journey-panel + .journey-panel {
+    border-top: 1px solid rgb(21 20 42 / 0.15);
+  }
+  .journey-copy-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 1.25rem;
+    border-radius: 999px;
+    background: var(--color-route);
+    color: var(--color-white);
+  }
+  .journey-text {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .journey[data-pinned] {
+    height: calc(100vh - var(--header-h) + (var(--stops) - 1) * 80vh);
+    height: calc(100svh - var(--header-h) + (var(--stops) - 1) * 80svh);
+  }
+  .journey[data-pinned] .journey-stage {
+    position: sticky;
+    top: var(--header-h);
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    height: calc(100vh - var(--header-h));
+    height: calc(100svh - var(--header-h));
+    padding-block: 0;
+    overflow: hidden;
+    overflow: clip;
+  }
+  .journey[data-pinned] .journey-track {
+    display: flex;
+    width: calc(var(--stops) * 100%);
+    min-height: 0;
+    transform: translate3d(calc(var(--u, 0) * -100% / var(--stops)), 0, 0);
+  }
+  .journey[data-pinned] .journey-panel {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) var(--road-h);
+    flex: 0 0 calc(100% / var(--stops));
+    min-width: 0;
+    padding: 0;
+    border: 0;
+  }
+  .journey[data-pinned] .journey-copy {
+    display: flex;
+    align-items: center;
+    min-height: 0;
+    overflow: hidden;
+    /* Text fades as its stop slides away from the middle of the screen. */
+    opacity: clamp(
+      0,
+      calc(1 - max(var(--u, 0) - var(--k), var(--k) - var(--u, 0)) * 1.9),
+      1
+    );
+  }
+  .journey[data-pinned] .journey-copy-icon {
+    display: none;
+  }
+  .journey[data-pinned] .journey-text {
+    /* Sized from the screen so the longest stop still fits on a phone. */
+    font-size: clamp(0.9375rem, min(2.3vh, 0.95rem + 0.4vw), 1.3125rem);
+    line-height: 1.5;
+  }
+
+  /* Bar at the top: one dash per stop, filling as the road moves. */
+  .journey[data-pinned] .journey-nav {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+  .journey-nav ol {
+    display: flex;
+    flex: 1;
+    gap: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .journey-nav li {
+    --fill: clamp(0, calc(var(--u, 0) - var(--k) + 1), 1);
+    flex: 1;
+  }
+  .journey-step {
+    display: block;
+    width: 100%;
+    padding-block: 1.125rem 0.5rem;
+    text-align: left;
+    cursor: pointer;
+  }
+  .journey-step-bar {
+    position: relative;
+    display: block;
+    height: 4px;
+    background: rgb(21 20 42 / 0.16);
+  }
+  .journey-step-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-signal-deep);
+    transform: scaleX(var(--fill));
+    transform-origin: left;
+  }
+  .journey-step-label {
+    display: none;
+    margin-top: 0.625rem;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-slate);
+  }
+  @media (min-width: 48rem) {
+    .journey-step-label {
+      display: block;
+    }
+  }
+  .journey-step[aria-current] .journey-step-label,
+  .journey-step:hover .journey-step-label {
+    color: var(--color-ink);
+  }
+  .journey-arrow {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 2px solid rgb(21 20 42 / 0.3);
+    border-radius: 999px;
+    color: var(--color-ink);
+    cursor: pointer;
+    transition:
+      background-color 0.15s,
+      color 0.15s,
+      border-color 0.15s;
+  }
+  .journey-arrow:hover:not([aria-disabled="true"]) {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-white);
+  }
+  .journey-arrow[aria-disabled="true"] {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  /* The road, one stretch per stop, and the sign standing beside it. */
+  .journey[data-pinned] .journey-road {
+    position: relative;
+    display: block;
+  }
+  .journey-road svg {
+    position: absolute;
+    bottom: calc(var(--lane) / 2 + 12px);
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(var(--amp) * 2);
+    overflow: visible;
+  }
+  .journey-road path {
+    fill: none;
+    vector-effect: non-scaling-stroke;
+  }
+  .journey-tarmac {
+    stroke: var(--color-ink);
+    stroke-width: var(--lane);
+  }
+  .journey-dash {
+    stroke: rgb(255 255 255 / 0.55);
+    stroke-width: 2.5px;
+    stroke-dasharray: 20 14;
+  }
+  .journey-sign {
+    position: absolute;
+    bottom: calc(var(--lane) + 12px + var(--amp) * (1 + var(--side)) + var(--stem));
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--sign);
+    height: var(--sign);
+    border: 3px solid var(--color-ink);
+    border-radius: 999px;
+    background: var(--color-white);
+    color: var(--color-ink);
+    translate: -50% 0;
+    transition:
+      background-color 0.25s,
+      color 0.25s;
+  }
+  .journey-sign::after {
+    content: "";
+    position: absolute;
+    top: calc(100% + 3px);
+    left: 50%;
+    width: 3px;
+    height: var(--stem);
+    background: var(--color-ink);
+    translate: -50% 0;
+  }
+  .journey-panel.is-active .journey-sign {
+    background: var(--color-route);
+    color: var(--color-white);
+  }
+
+  /* The red consignment. It stays mid-screen while the road moves under it. */
+  .journey[data-pinned] .journey-load {
+    position: absolute;
+    bottom: calc(var(--lane) / 2 + 12px + var(--amp) * (1 + var(--cos, 1)));
+    left: 50%;
+    display: block;
+    width: calc(var(--lane) * 0.95);
+    height: calc(var(--lane) * 0.5);
+    border-radius: 3px;
+    background: var(--color-signal);
+    box-shadow: inset calc(var(--lane) * -0.26) 0 0 var(--color-signal-deep);
+    translate: -50% 50%;
+    rotate: var(--tilt, 0deg);
   }
 }

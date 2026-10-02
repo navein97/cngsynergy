@@ -1,4 +1,7 @@
-/** Text for the Our Services page (/our-service/). */
+/**
+ * Text for the Our Services page (/our-service/).
+ * `summary` is the one-line version shown on the home page.
+ */
 
 export const services = {
   title: "Our Services",
@@ -8,21 +11,29 @@ export const services = {
     {
       icon: "strategy",
       title: "Logistics Strategy and Consultancy",
+      summary:
+        "Actionable plans that reduce costs, improve delivery times and raise service levels.",
       body: "At CNG Synergy, we dive deep into your logistics operations, analysing current processes to identify pain points and opportunities for improvement. Our strategic consultancy focuses on creating actionable plans that reduce costs, improve delivery times, and increase service levels. Whether you need to expand your vehicle fleet or optimize delivery routes, we offer a tailored roadmap to meet your business goals.",
     },
     {
       icon: "truck",
       title: "Trucking and Transport Optimization",
+      summary:
+        "Fleet management, route optimization and lower fuel use, so your trucks work smarter.",
       body: "With extensive knowledge in freight transport operations across Malaysia, we help businesses enhance trucking efficiency. We assist in fleet management, route optimization, and fuel usage reduction, ensuring your trucks work smarter, not harder. By minimizing empty miles and increasing truck utilization, we help you lower operational costs and improve delivery reliability.",
     },
     {
       icon: "warehouse",
       title: "Warehouse Operations and Distribution",
+      summary:
+        "Better layouts, workflows and inventory handling to save space and cut lead times.",
       body: "Efficient warehouse operations are critical to ensuring seamless distribution. We help businesses optimize warehouse layouts, workflows, and inventory handling to maximize space utilization and reduce lead times. Our solutions improve the speed and accuracy of order fulfilment, ensuring your products are delivered on time and in perfect condition.",
     },
     {
       icon: "advisory",
       title: "Advisory for Trucking Businesses",
+      summary:
+        "Guidance to set up or improve a trucking business, from planning to daily operations.",
       body: "Looking to establish or improve any type of trucking business? We offer expert advisory services for all trucking segments—from general freight to specialized services. Drawing from our years of experience in setting up successful trucking operations, including haulage, we guide you through every phase—from strategic planning to day-to-day operational management. With our knowledge of the trucking industry, we help you build a trucking business that’s efficient, scalable, and profitable.",
     },
   ],

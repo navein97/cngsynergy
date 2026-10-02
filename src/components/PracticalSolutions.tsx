@@ -1,9 +1,20 @@
 import Link from "next/link";
-import { Icon } from "@/components/Icon";
+import { Icon, WhatsAppIcon } from "@/components/Icon";
+import { contact } from "@/content/contact";
 import { practicalSolutions } from "@/content/home";
+import { site } from "@/content/site";
 
-/** "We Deliver Practical Business Solutions" block, shared by Home and About. */
-export function PracticalSolutions({ showButton = true }: { showButton?: boolean }) {
+/**
+ * "We Deliver Practical Business Solutions" block, shared by Home and About.
+ * `showDirect` adds the WhatsApp and phone buttons next to "Contact us".
+ */
+export function PracticalSolutions({
+  showButton = true,
+  showDirect = false,
+}: {
+  showButton?: boolean;
+  showDirect?: boolean;
+}) {
   return (
     <section className="on-dark bg-route text-white">
       <div className="shell grid gap-8 py-16 lg:grid-cols-[1fr_1.15fr] lg:items-center lg:gap-16 lg:py-24">
@@ -13,13 +24,29 @@ export function PracticalSolutions({ showButton = true }: { showButton?: boolean
             {practicalSolutions.body}
           </p>
           {showButton && (
-            <Link
-              href="/contact-us/"
-              className="btn mt-8 bg-white text-route hover:bg-dock"
-            >
-              Contact us
-              <Icon name="arrow" width={20} height={20} />
-            </Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact-us/" className="btn bg-white text-route hover:bg-dock">
+                Contact us
+                <Icon name="arrow" width={20} height={20} />
+              </Link>
+              {showDirect && (
+                <>
+                  <a
+                    href={site.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-whatsapp"
+                  >
+                    <WhatsAppIcon />
+                    {contact.whatsappLabel}
+                  </a>
+                  <a href={site.phone.href} className="btn btn-outline-light">
+                    <Icon name="phone" width={20} height={20} />
+                    {site.phone.display}
+                  </a>
+                </>
+              )}
+            </div>
           )}
         </div>
       </div>
