@@ -1,26 +1,187 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Design tokens. Use these names in class names, e.g. `bg-ink`, `text-route`.
+  Brand colours come from the CNG Synergy logo and the ProDrive 180 identity.
+*/
+@theme {
+  /* CNG Synergy */
+  --color-ink: #15142a; /* logo navy: header, hero, footer */
+  --color-ink-raised: #23224a; /* surfaces and lines on top of ink */
+  --color-signal: #ef1717; /* logo red: marks and large type only */
+  --color-signal-deep: #c81010; /* red that passes contrast for buttons and links */
+  --color-route: #0536b2; /* brand blue */
+  --color-dock: #ecedf4; /* pale section background */
+  --color-slate: #474859; /* body text on light backgrounds */
+  --color-mist: #c9cbdc; /* body text on ink */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* ProDrive 180 */
+  --color-pd-navy: #051c33;
+  --color-pd-orange: #f07d3e;
+  --color-pd-orange-soft: #fce4d4;
+  --color-pd-green: #1b8a5b;
+  --color-pd-green-soft: #e6f7ef;
+  --color-pd-blue: #1a4a8a;
+  --color-pd-sky: #4a90c4;
+  --color-pd-line: #d8dde4;
+  --color-pd-surface: #f4f5f7;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-sans: var(--font-barlow), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+
+  --animate-reveal: reveal 1.5s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-travel: travel 2.6s cubic-bezier(0.65, 0, 0.35, 1) 0.3s both;
+  --animate-fill: fill 1s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
+
+  @keyframes reveal {
+    from {
+      clip-path: inset(-20px 100% -20px -100vw);
+    }
+    to {
+      clip-path: inset(-20px -100vw -20px -100vw);
+    }
+  }
+  @keyframes travel {
+    from {
+      offset-distance: 0%;
+    }
+    to {
+      offset-distance: 82%;
+    }
+  }
+  @keyframes fill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-white);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-route);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-white);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Page width and side gutters */
+  .shell {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Headings set in Barlow Condensed */
+  .display-1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(3.25rem, 10.5vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+  .display-2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.125rem, 4.6vw, 3.5rem);
+    line-height: 1.02;
+  }
+  .display-3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2.4vw, 1.875rem);
+    line-height: 1.1;
+  }
+
+  /* Dashed line that echoes a road's lane marking */
+  .lane {
+    height: 3px;
+    background: repeating-linear-gradient(
+      90deg,
+      currentColor 0 28px,
+      transparent 28px 46px
+    );
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 3.25rem;
+    padding: 0.75rem 1.625rem;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.2;
+    transition:
+      background-color 0.15s,
+      color 0.15s,
+      border-color 0.15s;
+  }
+  .btn-primary {
+    background: var(--color-signal-deep);
+    color: var(--color-white);
+  }
+  .btn-primary:hover {
+    background: #a80c0c;
+  }
+  .btn-outline-light {
+    border: 2px solid rgb(255 255 255 / 0.55);
+    color: var(--color-white);
+  }
+  .btn-outline-light:hover {
+    border-color: var(--color-white);
+    background: rgb(255 255 255 / 0.08);
+  }
+  .btn-whatsapp {
+    background: #0b7a43;
+    color: var(--color-white);
+  }
+  .btn-whatsapp:hover {
+    background: #096236;
+  }
 }

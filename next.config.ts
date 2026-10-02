@@ -1,7 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Keep the same addresses as the old WordPress site (/about-us/ etc.).
+  trailingSlash: true,
+
+  async redirects() {
+    return [
+      // Old WordPress addresses that people or Google may still have.
+      { source: "/our-services", destination: "/our-service/", permanent: true },
+      { source: "/contact", destination: "/contact-us/", permanent: true },
+      { source: "/about", destination: "/about-us/", permanent: true },
+      { source: "/wp-admin/:path*", destination: "/", permanent: false },
+      { source: "/wp-login.php", destination: "/", permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;
