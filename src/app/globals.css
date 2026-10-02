@@ -2,7 +2,7 @@
 
 /*
   Design tokens. Use these names in class names, e.g. `bg-ink`, `text-route`.
-  Brand colours come from the CNG Synergy logo and the ProDrive 180 identity.
+  Brand colours come from the CNG Synergy logo and the ProHayat 180 identity.
 */
 @theme {
   /* CNG Synergy */
@@ -15,7 +15,7 @@
   --color-slate: #474859; /* body text on light backgrounds */
   --color-mist: #c9cbdc; /* body text on ink */
 
-  /* ProDrive 180 */
+  /* ProHayat 180 */
   --color-pd-navy: #051c33;
   --color-pd-orange: #f07d3e;
   --color-pd-orange-soft: #fce4d4;

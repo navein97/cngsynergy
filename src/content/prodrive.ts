@@ -1,15 +1,15 @@
-/** Text for the ProDrive 180 page (/prodrive-180/). */
+/** Text for the ProHayat 180 page (/prodrive-180/). */
 
 export const prodrive = {
-  metaTitle: "ProDrive 180™ — Behavioural Learning for Professional Drivers",
+  metaTitle: "ProHayat 180™ — Behavioural Learning for Professional Drivers",
   metaDescription:
-    "ProDrive 180™ turns driver training into a 2-minute daily habit that builds lasting behaviour. Built for commercial drivers.",
+    "ProHayat 180™ turns driver training into a 2-minute daily habit that builds lasting behaviour. Built for commercial drivers.",
 
   hero: {
     badge: "Built for Commercial Drivers",
     title: "Behavioural Learning for Professional Drivers",
     sub: "Because safer operations begin with better daily decisions — not just better training.",
-    body: "Most driver training is forgotten in 30 days. ProDrive 180™ turns training into a 2-minute daily habit that builds lasting behaviour.",
+    body: "Most driver training is forgotten in 30 days. ProHayat 180™ turns training into a 2-minute daily habit that builds lasting behaviour.",
   },
 
   vehicleCategories: [
@@ -22,7 +22,7 @@ export const prodrive = {
   drivers: {
     badge: "For Drivers",
     title: "From Occasional Training to Daily Behaviour.",
-    body: "Conventional training transfers knowledge. ProDrive 180™ reinforces behaviour — every day.",
+    body: "Conventional training transfers knowledge. ProHayat 180™ reinforces behaviour — every day.",
     phone: {
       stage: "STAGE 2/8",
       day: "DAY 4",
@@ -52,7 +52,7 @@ export const prodrive = {
   managers: {
     badge: "For Managers & HSE",
     title: "From Daily Reminders to Recorded Proof.",
-    body: "Stop repeating the same briefings every morning with no record. ProDrive 180™ automates your daily touchpoint and gives you auditable proof.",
+    body: "Stop repeating the same briefings every morning with no record. ProHayat 180™ automates your daily touchpoint and gives you auditable proof.",
     dashboard: {
       title: "MASTER DASHBOARD",
       live: "LIVE",
@@ -74,12 +74,12 @@ export const prodrive = {
   closing: {
     headline: ["Behaviour. Reinforced.", "Every Day."],
     qrLabel: "SCAN FOR GOOGLE PLAY",
-    qrAlt: "QR code for ProDrive 180 on Google Play",
-    email: "jenna@cngsynergy.com",
-    phone: { display: "+60 12-345 6789", href: "tel:+60123456789" },
-    website: { display: "prodrive180.com", href: "https://prodrive180.com" },
+    qrAlt: "QR code for ProHayat 180 on Google Play",
+    email: "chandra@cngsynergy.com",
+    phone: { display: "+6019-997 0695", href: "tel:+60199970695" },
+    website: { display: "prohayat180.com", href: "https://prohayat180.com" },
     copyright:
-      "© 2026 CNG Synergy | ProDrive 180™ is brand of CNG Synergy. All rights reserved.",
+      "© 2026 CNG Synergy | ProHayat 180™ is brand of CNG Synergy. All rights reserved.",
     keywords: "BEHAVIOURAL SAFETY · DAILY HABIT · AUDITABLE PROOF",
   },
 } as const;
