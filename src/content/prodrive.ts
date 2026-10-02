@@ -75,6 +75,8 @@ export const prodrive = {
     headline: ["Behaviour. Reinforced.", "Every Day."],
     qrLabel: "SCAN FOR GOOGLE PLAY",
     qrAlt: "QR code for ProHayat 180 on Google Play",
+    appUrl:
+      "https://play.google.com/store/apps/details?id=com.cngsynergy.training&pcampaignid=web_share",
     email: "chandra@cngsynergy.com",
     phone: { display: "+6019-997 0695", href: "tel:+60199970695" },
     website: { display: "prohayat180.com", href: "https://prohayat180.com" },

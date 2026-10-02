@@ -123,7 +123,13 @@ export default function ProDrivePage() {
             <span className="text-pd-orange">{closing.headline[1]}</span>
           </h2>
           <div className="flex items-center gap-6">
-            <div className="shrink-0 rounded-lg bg-white p-2.5">
+            <a
+              href={closing.appUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={closing.qrAlt}
+              className="shrink-0 rounded-lg bg-white p-2.5 transition-transform hover:scale-105"
+            >
               <Image
                 src="/images/prodrive-qr.png"
                 alt={closing.qrAlt}
@@ -132,11 +138,16 @@ export default function ProDrivePage() {
                 unoptimized
                 className="size-24 [image-rendering:pixelated]"
               />
-            </div>
+            </a>
             <div>
-              <p className="text-sm font-semibold tracking-wide text-pd-orange">
+              <a
+                href={closing.appUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold tracking-wide text-pd-orange underline-offset-4 hover:underline"
+              >
                 {closing.qrLabel}
-              </p>
+              </a>
               <ul className="mt-2 space-y-1 text-lg">
                 <li>
                   <a href={`mailto:${closing.email}`} className="underline-offset-4 hover:underline">
