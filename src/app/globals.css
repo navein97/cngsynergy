@@ -206,7 +206,7 @@
 
   /* Paragraph that lights up word by word (LitText). --n words, --i this word. */
   .lit > span {
-    opacity: clamp(0.22, calc((var(--p) * (var(--n) + 8) - var(--i)) / 8), 1);
+    opacity: clamp(0.62, calc((var(--p) * (var(--n) + 8) - var(--i)) / 8), 1);
   }
 
   /* Photo that opens out to full width (PhotoBand). */
@@ -232,7 +232,7 @@
     transform-origin: left;
   }
   .unfold > * > * {
-    opacity: calc(0.3 + 0.7 * var(--t));
+    opacity: calc(0.8 + 0.2 * var(--t));
   }
 
   /* Checklist whose ticks draw themselves. --n items, --i this item. */
@@ -240,7 +240,7 @@
     --t: clamp(0, calc(var(--p) * (var(--n) + 0.5) - var(--i)), 1);
   }
   .ticks > li > span {
-    opacity: calc(0.35 + 0.65 * var(--t));
+    opacity: calc(0.8 + 0.2 * var(--t));
   }
   .ticks > li path {
     stroke-dasharray: 21;
