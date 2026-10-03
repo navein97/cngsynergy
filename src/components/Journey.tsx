@@ -35,6 +35,9 @@ type JourneyLabels = {
 
 const PINNED_QUERY = "(prefers-reduced-motion: no-preference) and (min-height: 600px)";
 
+/** Text sizes to try, largest first, as a share of the full size. */
+const TEXT_STEPS = [1, 0.96, 0.92, 0.88, 0.84, 0.8, 0.76, 0.72, 0.68];
+
 /** Share of the scroll spent resting on the first and on the last stop. */
 const REST = 0.04;
 
@@ -96,7 +99,20 @@ export function Journey({
       setActive(Math.round(position));
     };
 
-    /** Pin the section only if every stop's text fits on this screen. */
+    /** True when every stop's text fits in the space above the road. */
+    const textFits = () => {
+      for (const copy of stage.querySelectorAll<HTMLElement>(".journey-copy")) {
+        const inner = copy.firstElementChild as HTMLElement | null;
+        if (inner && inner.offsetHeight > copy.clientHeight + 1) return false;
+      }
+      return true;
+    };
+
+    /**
+     * Pin the section if the text fits on this screen. The text starts large
+     * and steps down (--fit) until it fits; if it still does not fit at the
+     * smallest step, the stops are shown as a plain list instead.
+     */
     const measure = () => {
       let fits = query.matches;
       if (fits) {
@@ -104,12 +120,19 @@ export function Journey({
         const styles = getComputedStyle(stage);
         stickyTop = parseFloat(styles.top) || 0;
         wave = parseFloat(styles.getPropertyValue("--amp")) || 0;
-        for (const copy of stage.querySelectorAll<HTMLElement>(".journey-copy")) {
-          const inner = copy.firstElementChild as HTMLElement | null;
-          if (inner && inner.offsetHeight > copy.clientHeight + 1) fits = false;
+        fits = false;
+        for (const step of TEXT_STEPS) {
+          section.style.setProperty("--fit", String(step));
+          if (textFits()) {
+            fits = true;
+            break;
+          }
         }
       }
-      if (!fits) section.removeAttribute("data-pinned");
+      if (!fits) {
+        section.removeAttribute("data-pinned");
+        section.style.removeProperty("--fit");
+      }
       isPinned = fits;
       setPinned(fits);
       update();
@@ -119,11 +142,17 @@ export function Journey({
       if (!frame) frame = requestAnimationFrame(update);
     };
     const first = requestAnimationFrame(measure);
+    /* Measure again once the web fonts are in: they change how much room the text needs. */
+    let stopped = false;
+    document.fonts.ready.then(() => {
+      if (!stopped) measure();
+    });
 
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", measure);
     query.addEventListener("change", measure);
     return () => {
+      stopped = true;
       cancelAnimationFrame(first);
       if (frame) cancelAnimationFrame(frame);
       window.removeEventListener("scroll", schedule);
