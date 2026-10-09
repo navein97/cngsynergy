@@ -5,13 +5,13 @@ import { site } from "@/content/site";
 export const prohayat = {
   metaTitle: "ProHayat™ 180 — Behavioural Learning for Professional Drivers",
   metaDescription:
-    "ProHayat™ 180 turns driver training into a 2-minute daily habit that builds lasting behaviour. Built for commercial drivers.",
+    "ProHayat™ 180 is a 2-minute daily habit that builds lasting behaviour. Built for commercial drivers.",
 
   hero: {
     badge: "Built for Commercial Drivers",
     title: "Behavioural Learning for Professional Drivers",
     sub: "Because safer operations begin with better daily decisions — not just better training.",
-    body: "Most driver training is forgotten in 30 days. ProHayat™ 180 turns training into a 2-minute daily habit that builds lasting behaviour.",
+    body: "One-off training is forgotten in 30 days. ProHayat™ 180 is a 2-minute daily habit that builds lasting behaviour.",
   },
 
   /** The two rows of days under the hero. They fill in as the visitor scrolls. */
