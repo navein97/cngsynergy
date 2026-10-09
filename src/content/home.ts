@@ -103,7 +103,7 @@ export const home = {
     link: "See all services",
   },
   prohayatPreview: {
-    name: "ProHayat 180™",
+    name: "ProHayat™ 180",
     link: "See ProHayat 180",
   },
 } as const;
