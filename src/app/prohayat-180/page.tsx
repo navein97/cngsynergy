@@ -25,7 +25,7 @@ export default function ProHayatPage() {
           <div className="mt-7 grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end lg:gap-16">
             <h1 className="font-display text-[clamp(2.75rem,7vw,5.5rem)] font-bold leading-[0.95]">
               <span className="text-pd-orange">
-                ProHayat 180<sup className="text-[0.45em]">™</sup>
+                ProHayat<sup className="text-[0.45em]">™</sup> 180
               </span>{" "}
               {hero.title}
             </h1>

@@ -3,22 +3,22 @@
 import { site } from "@/content/site";
 
 export const prohayat = {
-  metaTitle: "ProHayat 180™ — Behavioural Learning for Professional Drivers",
+  metaTitle: "ProHayat™ 180 — Behavioural Learning for Professional Drivers",
   metaDescription:
-    "ProHayat 180™ turns driver training into a 2-minute daily habit that builds lasting behaviour. Built for commercial drivers.",
+    "ProHayat™ 180 turns driver training into a 2-minute daily habit that builds lasting behaviour. Built for commercial drivers.",
 
   hero: {
     badge: "Built for Commercial Drivers",
     title: "Behavioural Learning for Professional Drivers",
     sub: "Because safer operations begin with better daily decisions — not just better training.",
-    body: "Most driver training is forgotten in 30 days. ProHayat 180™ turns training into a 2-minute daily habit that builds lasting behaviour.",
+    body: "Most driver training is forgotten in 30 days. ProHayat™ 180 turns training into a 2-minute daily habit that builds lasting behaviour.",
   },
 
   /** The two rows of days under the hero. They fill in as the visitor scrolls. */
   habit: {
     days: 30,
     fading: "One-off training, forgotten in 30 days",
-    lasting: "ProHayat 180™, 2 minutes every day",
+    lasting: "ProHayat™ 180, 2 minutes every day",
   },
 
   /**
@@ -88,7 +88,7 @@ export const prohayat = {
   drivers: {
     badge: "For Drivers",
     title: "From Occasional Training to Daily Behaviour.",
-    body: "Conventional training transfers knowledge. ProHayat 180™ reinforces behaviour — every day.",
+    body: "Conventional training transfers knowledge. ProHayat™ 180 reinforces behaviour — every day.",
     phone: {
       stage: "STAGE 2/8",
       day: "DAY 4",
@@ -111,7 +111,7 @@ export const prohayat = {
   managers: {
     badge: "For Managers & HSE",
     title: "From Daily Reminders to Recorded Proof.",
-    body: "Stop repeating the same briefings every morning with no record. ProHayat 180™ automates your daily touchpoint and gives you auditable proof.",
+    body: "Stop repeating the same briefings every morning with no record. ProHayat™ 180 automates your daily touchpoint and gives you auditable proof.",
     dashboard: {
       title: "MASTER DASHBOARD",
       live: "LIVE",
@@ -148,7 +148,7 @@ export const prohayat = {
     phone: site.phone,
     website: { display: "prohayat180.com", href: "https://prohayat180.com" },
     copyright:
-      "© 2026 CNG Synergy | ProHayat 180™ is brand of CNG Synergy. All rights reserved.",
+      "© 2026 CNG Synergy | ProHayat™ 180 is brand of CNG Synergy. All rights reserved.",
     keywords: "BEHAVIOURAL SAFETY · DAILY HABIT · AUDITABLE PROOF",
   },
 } as const;
