@@ -23,7 +23,7 @@ function read(formData: FormData, key: string, maxLength: number) {
  *
  * Environment variables (set these in Vercel, see .env.example):
  *   RESEND_API_KEY      required
- *   CONTACT_TO_EMAIL    optional, defaults to the address in content/site.ts
+ *   CONTACT_TO_EMAIL    optional, defaults to formInbox in content/site.ts
  *   CONTACT_FROM_EMAIL  optional, must be on a domain verified in Resend
  */
 export async function sendMessage(
@@ -69,7 +69,7 @@ export async function sendMessage(
         from:
           process.env.CONTACT_FROM_EMAIL ??
           "CNG Synergy Website <website@contact.cngsynergy.com>",
-        to: [process.env.CONTACT_TO_EMAIL ?? site.email],
+        to: [process.env.CONTACT_TO_EMAIL ?? site.formInbox],
         subject: `Website enquiry from ${name}`,
         text: [
           `Name: ${name}`,

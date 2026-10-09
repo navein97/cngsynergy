@@ -1,5 +1,7 @@
 /** Text for the ProHayat 180 page (/prohayat-180/). */
 
+import { site } from "@/content/site";
+
 export const prohayat = {
   metaTitle: "ProHayat 180™ — Behavioural Learning for Professional Drivers",
   metaDescription:
@@ -142,8 +144,8 @@ export const prohayat = {
     qrAlt: "QR code for ProHayat 180 on Google Play",
     appUrl:
       "https://play.google.com/store/apps/details?id=com.cngsynergy.training&pcampaignid=web_share",
-    email: "chandra@cngsynergy.com",
-    phone: { display: "+6019-997 0695", href: "tel:+60199970695" },
+    email: site.email,
+    phone: site.phone,
     website: { display: "prohayat180.com", href: "https://prohayat180.com" },
     copyright:
       "© 2026 CNG Synergy | ProHayat 180™ is brand of CNG Synergy. All rights reserved.",
