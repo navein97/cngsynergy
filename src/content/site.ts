@@ -17,7 +17,7 @@ export const site = {
   email: "enquiry@cngsynergy.com",
   /** Inbox that receives contact form messages. Not shown on the site. */
   formInbox: "chandra@cngsynergy.com",
-  whatsappUrl: "https://wa.link/out5ma",
+  whatsappUrl: "https://wa.me/60192182916",
   address: [
     "B-5-7A/1, Block B,",
     "Pusat Perniagaan Prima Klang,",
