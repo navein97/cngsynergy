@@ -8,12 +8,16 @@ export const site = {
   url: "https://cngsynergy.com",
   tagline: "Driving business performance through logistics excellence",
   titleSuffix: "CNGSYNERGY – Malaysia Transportation and Warehouse",
+  /** Customer service line, shown on every page. */
   phone: {
-    display: "+6019-997 0695",
-    href: "tel:+60199970695",
+    display: "+6019-218 2916",
+    href: "tel:+60192182916",
   },
-  email: "chandra@cngsynergy.com",
-  whatsappUrl: "https://wa.link/out5ma",
+  /** Public address shown on every page. */
+  email: "enquiry@cngsynergy.com",
+  /** Inbox that receives contact form messages. Not shown on the site. */
+  formInbox: "chandra@cngsynergy.com",
+  whatsappUrl: "https://wa.me/60192182916",
   address: [
     "B-5-7A/1, Block B,",
     "Pusat Perniagaan Prima Klang,",
