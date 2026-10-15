@@ -74,7 +74,7 @@ export default function ContactPage() {
       <section aria-label="Map">
         <iframe
           src={site.mapEmbedUrl}
-          title="Map showing Pusat Perniagaan Prima Klang, Jalan Kota 2/KS 1, 41000 Klang, Selangor"
+          title="Map showing 46, Jalan Istana, Kawasan 1, 41000 Klang, Selangor"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           className="block h-[26rem] w-full border-0"
