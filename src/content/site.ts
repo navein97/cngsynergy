@@ -10,13 +10,14 @@ export const site = {
   titleSuffix: "CNGSYNERGY – Malaysia Transportation and Warehouse",
   /** Customer service line, shown on every page. */
   phone: {
-    display: "+6019-218 2916",
-    href: "tel:+60192182916",
+    display: "03-8687 8460",
+    href: "tel:+60386878460",
   },
   /** Public address shown on every page. */
   email: "enquiry@cngsynergy.com",
   /** Inbox that receives contact form messages. Not shown on the site. */
   formInbox: "chandra@cngsynergy.com",
+  /** WhatsApp goes to Jenna's mobile; the office line above cannot take WhatsApp. */
   whatsappUrl: "https://wa.me/60192182916",
   address: [
     "B-5-7A/1, Block B,",
