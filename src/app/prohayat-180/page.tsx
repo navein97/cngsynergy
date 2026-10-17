@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { Badge, ProHayatDemo } from "@/components/ProHayatDemo";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { TrailerBand } from "@/components/TrailerBand";
 import { prohayat } from "@/content/prohayat";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function ProHayatPage() {
-  const { hero, habit, getStarted, closing } = prohayat;
+  const { hero, habit, getStarted, closing, trailer, setupGuide } = prohayat;
   const days = Array.from({ length: habit.days }, (_, index) => index);
   const daysStyle = { "--n": habit.days } as CSSProperties;
 
@@ -59,8 +60,47 @@ export default function ProHayatPage() {
         </div>
       </header>
 
+      {/* Trailer: muted loop, the button plays it with sound, full screen */}
+      <TrailerBand title={trailer.title} label={trailer.label} src={trailer.src} poster={trailer.poster} />
+
       {/* Vehicle buttons, the phone scenario and the manager dashboard */}
       <ProHayatDemo />
+
+      {/* Setup guide: steps beside the video in a phone frame */}
+      <section className="bg-white">
+        <div className="shell grid gap-12 py-16 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20 lg:py-24">
+          <div>
+            <h2 className="font-display text-[clamp(2.25rem,5vw,3.75rem)] font-bold leading-none">
+              {setupGuide.heading}
+            </h2>
+            <p className="mt-5 max-w-xl text-xl">{setupGuide.body}</p>
+            <ol className="mt-8 max-w-xl space-y-4 text-lg">
+              {setupGuide.steps.map((step, index) => (
+                <li key={step} className="flex items-start gap-4">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-pd-navy font-bold text-white">
+                    {index + 1}
+                  </span>
+                  <span className="pt-1">{step}</span>
+                </li>
+              ))}
+            </ol>
+            <a href={getStarted.href} className="btn mt-9 bg-pd-orange text-pd-navy hover:bg-pd-navy hover:text-white">
+              {getStarted.label}
+            </a>
+          </div>
+          <div className="mx-auto w-[min(320px,80vw)] rounded-[48px] bg-pd-navy p-3 shadow-2xl">
+            <video
+              src={setupGuide.src}
+              poster={setupGuide.poster}
+              controls
+              playsInline
+              preload="none"
+              aria-label={setupGuide.videoTitle}
+              className="aspect-[9/16] w-full rounded-[38px] bg-black object-cover"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Closing */}
       <section className="on-dark bg-pd-navy text-white">

@@ -30,6 +30,28 @@ export const prohayat = {
     },
   },
 
+  /** The trailer under the page header. It plays muted; the button plays it with sound, full screen. */
+  trailer: {
+    title: "ProHayat™ 180 – Official Trailer",
+    label: "Watch with sound",
+    src: "/videos/prohayat-180-trailer.mp4",
+    poster: "/images/prohayat-180-trailer.jpg",
+  },
+
+  /** The setup guide video and the steps beside it, above the closing section. */
+  setupGuide: {
+    heading: "Set up in minutes",
+    body: "Watch how a company gets started, from registering to drivers answering their first questions.",
+    steps: [
+      "Register your company and confirm with the SMS code.",
+      "Add your drivers in Team and send each one their login.",
+      "Drivers log in, pick a batch and answer 5 questions a day.",
+    ],
+    videoTitle: "How to set up ProHayat™ 180",
+    src: "/videos/prohayat-180-setup-guide.mp4",
+    poster: "/images/prohayat-180-setup-guide.jpg",
+  },
+
   /** The two rows of days under the hero. They fill in as the visitor scrolls. */
   habit: {
     days: 30,
