@@ -19,6 +19,15 @@ export const prohayat = {
     label: "Get started for your company",
     href: "https://prohayat180.com/register",
     note: "Register your company, choose your driver seats and invite your team. Live in 48 hours.",
+    stores: {
+      before: "Also on",
+      googlePlay: {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.cngsynergy.training",
+      },
+      /** Not linked yet. Add an href here once the App Store link is ready. */
+      appStore: { label: "the App Store" },
+    },
   },
 
   /** The two rows of days under the hero. They fill in as the visitor scrolls. */
