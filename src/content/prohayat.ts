@@ -19,14 +19,16 @@ export const prohayat = {
     label: "Get started for your company",
     href: "https://prohayat180.com/register",
     note: "Register your company, choose your driver seats and invite your team. Live in 48 hours.",
+    /**
+     * Official store badges for drivers, shown under the "Get started" button.
+     * The App Store badge is left out until the iOS app is live.
+     */
     stores: {
-      before: "Also on",
       googlePlay: {
-        label: "Google Play",
+        label: "Get it on Google Play",
         href: "https://play.google.com/store/apps/details?id=com.cngsynergy.training",
+        badge: "/images/google-play-badge.svg",
       },
-      /** Not linked yet. Add an href here once the App Store link is ready. */
-      appStore: { label: "the App Store" },
     },
   },
 
