@@ -2,8 +2,7 @@ import { Icon, type IconName } from "@/components/Icon";
 
 /**
  * Hero illustration: a road linking the three parties CNG Synergy works
- * between. The road draws in once on page load and a consignment travels
- * along it. With reduced motion switched on, it simply appears.
+ * between. Static on purpose: no draw-in or moving parts.
  */
 
 const stopIcons: IconName[] = ["factory", "truck", "warehouse"];
@@ -21,8 +20,6 @@ function buildRoad(width: number) {
     `C ${x[0] + bend} ${HIGH} ${x[1] - bend} ${LOW} ${x[1]} ${LOW}`,
     `C ${x[1] + bend} ${LOW} ${x[2] - bend} ${HIGH} ${x[2]} ${HIGH}`,
   ].join(" ");
-  /* The consignment's trip: from the left edge to the last stop. */
-  const journey = `M -40 ${LOW} ${curves}`;
   /* The road itself runs on past both edges of the screen. */
   const road = `M ${-BLEED} ${LOW} H -40 ${curves} C ${x[2] + lead * 0.75} ${HIGH} ${x[2] + lead} ${LOW} ${width + 40} ${LOW} H ${width + BLEED}`;
   const stops = x.map((cx, index) => ({
@@ -30,11 +27,11 @@ function buildRoad(width: number) {
     y: index === 1 ? LOW : HIGH,
     icon: stopIcons[index],
   }));
-  return { road, journey, stops };
+  return { road, stops };
 }
 
 function Road({ width, className }: { width: number; className: string }) {
-  const { road, journey, stops } = buildRoad(width);
+  const { road, stops } = buildRoad(width);
   return (
     <svg
       viewBox={`0 0 ${width} 236`}
@@ -54,17 +51,6 @@ function Road({ width, className }: { width: number; className: string }) {
         stroke="rgb(255 255 255 / 0.5)"
         strokeWidth="3"
         strokeDasharray="22 16"
-      />
-      {/* The consignment. It stops on the last stretch, just before the warehouse. */}
-      <rect
-        x="-14"
-        y="-14"
-        width="28"
-        height="28"
-        rx="3"
-        fill="var(--color-signal)"
-        className="animate-travel"
-        style={{ offsetPath: `path("${journey}")`, offsetRotate: "auto" }}
       />
       {stops.map((stop) => (
         <g key={stop.icon} transform={`translate(${stop.x} ${stop.y})`}>
@@ -93,7 +79,7 @@ export function RouteDiagram({
 }) {
   return (
     <figure aria-label={description} role="group">
-      <div className="motion-safe:animate-reveal">
+      <div>
         {/* A tighter drawing on phones keeps the stops large enough to read. */}
         <Road width={640} className="block sm:hidden" />
         <Road width={1200} className="hidden sm:block" />

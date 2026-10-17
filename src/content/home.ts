@@ -18,13 +18,11 @@ export const home = {
   },
 
   /**
-   * The route section: the four stops the red consignment travels through as
-   * the visitor scrolls. `icon` is a name from src/components/Icon.tsx.
+   * The four pillars section (src/components/Pillars.tsx), shown as a grid.
+   * `icon` is a name from src/components/Icon.tsx.
    */
   route: {
     title: "Where CNG Synergy fits in your logistics",
-    previous: "Previous stop",
-    next: "Next stop",
     more: "Learn more",
     moreHref: "/about-us/",
   },

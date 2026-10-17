@@ -29,26 +29,8 @@
   --font-sans: var(--font-barlow), "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
 
-  --animate-reveal: reveal 1.5s cubic-bezier(0.65, 0, 0.35, 1) both;
-  --animate-travel: travel 2.6s cubic-bezier(0.65, 0, 0.35, 1) 0.3s both;
   --animate-fill: fill 1s cubic-bezier(0.65, 0, 0.35, 1) 0.2s both;
 
-  @keyframes reveal {
-    from {
-      clip-path: inset(-20px 100% -20px -100vw);
-    }
-    to {
-      clip-path: inset(-20px -100vw -20px -100vw);
-    }
-  }
-  @keyframes travel {
-    from {
-      offset-distance: 0%;
-    }
-    to {
-      offset-distance: 82%;
-    }
-  }
   @keyframes fill {
     from {
       transform: scaleX(0);
@@ -204,35 +186,12 @@
     --p: 1;
   }
 
-  /* Paragraph that lights up word by word (LitText). --n words, --i this word. */
-  .lit > span {
-    opacity: clamp(0.62, calc((var(--p) * (var(--n) + 8) - var(--i)) / 8), 1);
-  }
-
   /* Photo that opens out to full width (PhotoBand). */
   .photo-open {
     clip-path: inset(calc((1 - var(--p)) * 16%) calc((1 - var(--p)) * 9%));
   }
   .photo-open img {
     scale: calc(1.2 - var(--p) * 0.2);
-  }
-
-  /* Group whose items switch on one after another. --n items, --i this item. */
-  .unfold > * {
-    --t: clamp(0, calc(var(--p) * (var(--n) + 1) - var(--i)), 1);
-    position: relative;
-  }
-  .unfold > *::before {
-    content: "";
-    position: absolute;
-    inset: -2px 0 auto;
-    height: 3px;
-    background: var(--color-signal);
-    transform: scaleX(var(--t));
-    transform-origin: left;
-  }
-  .unfold > * > * {
-    opacity: calc(0.8 + 0.2 * var(--t));
   }
 
   /* Checklist whose ticks draw themselves. --n items, --i this item. */
