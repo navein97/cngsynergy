@@ -14,6 +14,13 @@ export const prohayat = {
     body: "One-off training is forgotten in 30 days. ProHayat™ 180 is a 2-minute daily habit that builds lasting behaviour.",
   },
 
+  /** The "Get started" button for companies (hero and closing). Companies register and pay on the web app. */
+  getStarted: {
+    label: "Get started for your company",
+    href: "https://prohayat180.com/register",
+    note: "Register your company, choose your driver seats and invite your team. Live in 48 hours.",
+  },
+
   /** The two rows of days under the hero. They fill in as the visitor scrolls. */
   habit: {
     days: 30,
@@ -140,10 +147,6 @@ export const prohayat = {
 
   closing: {
     headline: ["Behaviour. Reinforced.", "Every Day."],
-    qrLabel: "SCAN FOR GOOGLE PLAY",
-    qrAlt: "QR code for ProHayat 180 on Google Play",
-    appUrl:
-      "https://play.google.com/store/apps/details?id=com.cngsynergy.training&pcampaignid=web_share",
     email: site.email,
     phone: site.phone,
     website: { display: "prohayat180.com", href: "https://prohayat180.com" },

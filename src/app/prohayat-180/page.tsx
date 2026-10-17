@@ -1,6 +1,5 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Badge, ProHayatDemo } from "@/components/ProHayatDemo";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { prohayat } from "@/content/prohayat";
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function ProHayatPage() {
-  const { hero, habit, closing } = prohayat;
+  const { hero, habit, getStarted, closing } = prohayat;
   const days = Array.from({ length: habit.days }, (_, index) => index);
   const daysStyle = { "--n": habit.days } as CSSProperties;
 
@@ -32,6 +31,9 @@ export default function ProHayatPage() {
             <div>
               <p className="text-xl font-medium leading-snug sm:text-2xl">{hero.sub}</p>
               <p className="mt-4 text-lg text-white/75">{hero.body}</p>
+              <a href={getStarted.href} className="btn mt-6 bg-pd-orange text-pd-navy hover:bg-white">
+                {getStarted.label}
+              </a>
             </div>
           </div>
 
@@ -68,33 +70,13 @@ export default function ProHayatPage() {
             <br />
             <span className="text-pd-orange">{closing.headline[1]}</span>
           </h2>
-          <div className="flex items-center gap-6">
-            <a
-              href={closing.appUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={closing.qrAlt}
-              className="shrink-0 rounded-lg bg-white p-2.5 transition-transform hover:scale-105"
-            >
-              <Image
-                src="/images/prodrive-qr.png"
-                alt={closing.qrAlt}
-                width={200}
-                height={200}
-                unoptimized
-                className="size-24 [image-rendering:pixelated]"
-              />
+          <div className="max-w-md">
+            <a href={getStarted.href} className="btn bg-pd-orange text-pd-navy hover:bg-white">
+              {getStarted.label}
             </a>
+            <p className="mt-3 text-white/75">{getStarted.note}</p>
             <div>
-              <a
-                href={closing.appUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-semibold tracking-wide text-pd-orange underline-offset-4 hover:underline"
-              >
-                {closing.qrLabel}
-              </a>
-              <ul className="mt-2 space-y-1 text-lg">
+              <ul className="mt-6 space-y-1 text-lg">
                 <li>
                   <a href={`mailto:${closing.email}`} className="underline-offset-4 hover:underline">
                     {closing.email}
