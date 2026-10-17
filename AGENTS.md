@@ -43,26 +43,27 @@ The old `/prodrive-180/` address redirects to `/prohayat-180/` (see `next.config
 
 ## Scroll story
 
-The home page and the ProHayat 180 page react to scrolling. There are no animation
-libraries. One small component does the work:
+The site sells consultancy to logistics managers, so it stays calm: the home page
+has no scroll tricks apart from the yard photo opening out, and all text is
+readable straight away. The interactive, animated parts belong on the ProHayat 180
+page only. There are no animation libraries. One small component does the work:
 
 - `src/components/ScrollProgress.tsx` wraps a block and keeps a CSS variable `--p`
   on it: 0 as the block comes into view, 1 once it has been scrolled through.
 - The effects are plain CSS in `globals.css` (section "Scroll story") that read `--p`:
-  `lit` (paragraph lights up word by word, used through `LitText.tsx`), `photo-open`
-  (`<PhotoBand opensOnScroll />`), `unfold` (items switch on one after another),
-  `ticks` (check marks draw themselves), `days` and `meter-fill` (ProHayat 180).
-- For `unfold`, `ticks` and `days`, set `--n` (number of items) on the list and
-  `--i` (0, 1, 2...) on each item. Copy an existing use in `src/app/page.tsx`.
+  `photo-open` (`<PhotoBand opensOnScroll />`, home page yard photo), and on the
+  ProHayat 180 page `ticks` (check marks draw themselves), `days` and `meter-fill`.
+- For `ticks` and `days`, set `--n` (number of items) on the list and
+  `--i` (0, 1, 2...) on each item. Copy an existing use in `src/app/prohayat-180/`.
 - With reduced motion switched on, or without JavaScript, `--p` stays at 1 and
   everything shows in its finished state. Keep it that way: never hide content
   behind an effect.
 
-The route on the home page is `src/components/Journey.tsx`. It pins to the screen
-and slides the road sideways as the visitor scrolls. Its stops are `home.pillars`
-in `src/content/home.ts`; add or remove a stop there (each needs an `icon`). On
-short screens, or if a stop's text does not fit, it falls back to a plain list
-by itself.
+The four pillars on the home page are `src/components/Pillars.tsx`, a plain grid.
+Its items are `home.pillars` in `src/content/home.ts` (each needs an `icon`).
+The hero road (`RouteDiagram.tsx`) is a static drawing.
+`Journey.tsx` and `LitText.tsx` are the old scroll-jacking road and word-by-word
+paragraph; they are no longer used and can be deleted.
 
 ## ProHayat 180 scenarios
 

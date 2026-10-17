@@ -1,14 +1,12 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
-import { Journey } from "@/components/Journey";
-import { LitText } from "@/components/LitText";
 import { PhotoBand } from "@/components/PhotoBand";
+import { Pillars } from "@/components/Pillars";
 import { PracticalSolutions } from "@/components/PracticalSolutions";
 import { RichText } from "@/components/RichText";
 import { RouteDiagram } from "@/components/RouteDiagram";
-import { ScrollProgress } from "@/components/ScrollProgress";
 import { home } from "@/content/home";
 import { prohayat } from "@/content/prohayat";
 import { services } from "@/content/services";
@@ -19,9 +17,10 @@ export const metadata: Metadata = {
 
 /*
   The home page reads as one journey, top to bottom:
-  hero, what we stand for, the yard, the route (four stops), why choose us,
+  hero, what we stand for, the yard, the four pillars, why choose us,
   consulting, then short previews of Services and ProHayat 180, and contact.
-  Each block reacts to scrolling. See "Scroll story" in AGENTS.md.
+  Kept calm on purpose: text is readable straight away, no scroll tricks.
+  The only scroll effect left is the yard photo opening out.
 */
 export default function HomePage() {
   const { reasons } = home.whyChooseUs;
@@ -56,14 +55,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* What CNGSYNERGY stands for: the paragraph lights up as it is read */}
+      {/* What CNGSYNERGY stands for */}
       <section className="bg-white">
         <div className="shell grid gap-6 py-16 lg:grid-cols-[1fr_1.4fr] lg:gap-16 lg:py-28">
           <h2 className="display-2 text-ink">{home.standsFor.title}</h2>
-          <LitText
-            text={home.standsFor.body}
-            className="max-w-[62ch] text-xl leading-relaxed text-ink sm:text-2xl sm:leading-relaxed"
-          />
+          <p className="max-w-[62ch] text-xl leading-relaxed text-ink sm:text-2xl sm:leading-relaxed">
+            {home.standsFor.body}
+          </p>
         </div>
       </section>
 
@@ -73,25 +71,17 @@ export default function HomePage() {
         alt="A supervisor in a safety vest watches a reach stacker working between rows of shipping containers."
       />
 
-      {/* Expertise, value, who we support, why partner: the four stops */}
-      <Journey stops={home.pillars} labels={home.route} />
+      {/* Expertise, value, who we support, why partner */}
+      <Pillars pillars={home.pillars} labels={home.route} />
 
-      {/* Why you should choose us: the reasons light up one after another */}
+      {/* Why you should choose us */}
       <section className="on-dark bg-ink text-white">
         <div className="shell py-16 lg:py-24">
           <h2 className="display-2">{home.whyChooseUs.title}</h2>
           <div className="lane mt-7 max-w-md text-signal" />
-          <ScrollProgress from={0.85} to={0.7}>
-            <dl
-              className="unfold mt-12 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3"
-              style={{ "--n": reasons.length } as CSSProperties}
-            >
-              {reasons.map((reason, index) => (
-                <div
-                  key={reason.title}
-                  className="border-t border-white/20 pt-6"
-                  style={{ "--i": index } as CSSProperties}
-                >
+          <dl className="mt-12 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              {reasons.map((reason) => (
+                <div key={reason.title} className="border-t border-white/20 pt-6">
                   <dt className="display-3">{reason.title}</dt>
                   <dd className="mt-3 text-mist [&_strong]:text-white">
                     <RichText text={reason.body} />
@@ -99,11 +89,10 @@ export default function HomePage() {
                 </div>
               ))}
             </dl>
-          </ScrollProgress>
         </div>
       </section>
 
-      {/* Optimization and efficiency consulting: each point ticks itself off */}
+      {/* Optimization and efficiency consulting */}
       <section className="bg-white">
         <div className="shell grid gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-24">
           <div className="self-start lg:sticky lg:top-[calc(var(--header-h)+2.5rem)]">
@@ -112,16 +101,11 @@ export default function HomePage() {
               {home.consulting.body}
             </p>
           </div>
-          <ScrollProgress from={0.8} to={0.65}>
-            <ul
-              className="ticks border-b border-ink/15"
-              style={{ "--n": points.length } as CSSProperties}
-            >
-              {points.map((point, index) => (
+          <ul className="border-b border-ink/15">
+              {points.map((point) => (
                 <li
                   key={point}
                   className="flex gap-4 border-t border-ink/15 py-6 text-lg leading-relaxed lg:py-9"
-                  style={{ "--i": index } as CSSProperties}
                 >
                   <Icon
                     name="check"
@@ -132,7 +116,6 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-          </ScrollProgress>
         </div>
       </section>
 
@@ -145,24 +128,15 @@ export default function HomePage() {
               {home.servicesPreview.link}
             </PageLink>
           </div>
-          <ScrollProgress from={0.9} to={0.75}>
-            <ul
-              className="unfold mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4"
-              style={{ "--n": services.items.length } as CSSProperties}
-            >
-              {services.items.map((service, index) => (
-                <li
-                  key={service.title}
-                  className="border-t border-ink/20 pt-6"
-                  style={{ "--i": index } as CSSProperties}
-                >
+          <ul className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+              {services.items.map((service) => (
+                <li key={service.title} className="border-t border-ink/20 pt-6">
                   <Icon name={service.icon} width={34} height={34} className="text-route" />
                   <h3 className="display-3 mt-4 text-ink">{service.title}</h3>
                   <p className="mt-3">{service.summary}</p>
                 </li>
               ))}
             </ul>
-          </ScrollProgress>
         </div>
       </section>
 
