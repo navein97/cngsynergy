@@ -94,6 +94,8 @@ export default function ProHayatPage() {
               src={setupGuide.src}
               poster={setupGuide.poster}
               controls
+              controlsList="nodownload noplaybackrate"
+              disablePictureInPicture
               playsInline
               preload="none"
               aria-label={setupGuide.videoTitle}

@@ -18,7 +18,7 @@ export const prohayat = {
   getStarted: {
     label: "Get started for your company",
     href: "https://prohayat180.com/register",
-    note: "Register your company, choose your driver seats and invite your team. Live in 48 hours.",
+    note: "Register your company, choose your driver seats and invite your team. Up and running in minutes.",
     /**
      * Official store badges for drivers, shown under the "Get started" button.
      * The App Store badge is left out until the iOS app is live.
@@ -173,7 +173,7 @@ export const prohayat = {
     },
     features: [
       "Zero paperwork. Auto competency records.",
-      "Live in 48 hours. No hardware.",
+      "Set up in minutes. No hardware.",
       "Free up supervisors. Strengthen due diligence.",
     ],
   },
