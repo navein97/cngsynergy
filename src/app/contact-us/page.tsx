@@ -74,7 +74,7 @@ export default function ContactPage() {
       <section aria-label="Map">
         <iframe
           src={site.mapEmbedUrl}
-          title="Map showing 46, Jalan Istana, Kawasan 1, 41000 Klang, Selangor"
+          title={`Map showing ${site.address.join(" ")}`}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           className="block h-[26rem] w-full border-0"

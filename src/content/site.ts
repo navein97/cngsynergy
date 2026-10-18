@@ -20,11 +20,12 @@ export const site = {
   /** WhatsApp goes to Jenna's mobile; the office line above cannot take WhatsApp. */
   whatsappUrl: "https://wa.me/60192182916",
   address: [
-    "46, Jalan Istana, Kawasan 1,",
-    "41000 Klang, Selangor",
+    "No. B-5-7 A, Block B,",
+    "Pusat Perniagaan Prima Bayu Klang,",
+    "Jalan Kota 2/KS1, 41000 Klang, Selangor",
   ],
   mapEmbedUrl:
-    "https://maps.google.com/maps?q=46%20Jalan%20Istana%2C%20Kawasan%201%2C%2041000%20Klang%2C%20Selangor&t=m&z=16&output=embed&iwloc=near",
+    "https://maps.google.com/maps?q=Pusat%20Perniagaan%20Prima%20Bayu%20Klang%2C%20Jalan%20Kota%202%2FKS1%2C%2041000%20Klang%2C%20Selangor&t=m&z=16&output=embed&iwloc=near",
 } as const;
 
 export const navigation = [
