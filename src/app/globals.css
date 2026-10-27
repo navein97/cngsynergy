@@ -114,6 +114,16 @@
     letter-spacing: -0.01em;
     text-transform: uppercase;
   }
+  /* Home page headline: a full sentence, so smaller than display-1. */
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6.2vw, 5.25rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
   .display-2 {
     font-family: var(--font-display);
     font-weight: 600;

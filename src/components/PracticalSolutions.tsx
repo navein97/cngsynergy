@@ -5,7 +5,7 @@ import { practicalSolutions } from "@/content/home";
 import { site } from "@/content/site";
 
 /**
- * "We Deliver Practical Business Solutions" block, shared by Home and About.
+ * Closing contact block on the home page (text in `practicalSolutions`, src/content/home.ts).
  * `showDirect` adds the WhatsApp and phone buttons next to "Contact us".
  */
 export function PracticalSolutions({

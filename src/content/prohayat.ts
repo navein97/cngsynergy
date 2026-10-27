@@ -3,15 +3,15 @@
 import { site } from "@/content/site";
 
 export const prohayat = {
-  metaTitle: "ProHayat™ 180 — Behavioural Learning for Professional Drivers",
+  metaTitle: "ProHayat™ 180 — Driver Performance, Safety & Compliance App",
   metaDescription:
-    "ProHayat™ 180 is a 2-minute daily habit that builds lasting behaviour. Built for commercial drivers.",
+    "ProHayat™ 180 helps logistics companies build safer, more compliant commercial drivers, a few minutes a day. On Google Play and the App Store.",
 
   hero: {
     badge: "Built for Commercial Drivers",
-    title: "Behavioural Learning for Professional Drivers",
+    title: "Daily Driver Performance, Safety & Compliance",
     sub: "Because safer operations begin with better daily decisions — not just better training.",
-    body: "One-off training is forgotten in 30 days. ProHayat™ 180 is a 2-minute daily habit that builds lasting behaviour.",
+    body: "One-off briefings fade. ProHayat™ 180 is a short daily habit that keeps safety and compliance top of mind, with a record for every driver.",
   },
 
   /** The "Get started" button for companies (hero and closing). Companies register and pay on the web app. */
@@ -20,14 +20,23 @@ export const prohayat = {
     href: "https://prohayat180.com/register",
     note: "Register your company, choose your driver seats and invite your team. Up and running in minutes.",
     /**
-     * Official store badges for drivers, shown under the "Get started" button.
-     * The App Store badge is left out until the iOS app is live.
+     * Official store badges for drivers (src/components/StoreBadges.tsx).
+     * A store with an empty `href` is hidden.
+     * TODO: paste the App Store link into appStore.href and add Apple's
+     * official badge as public/images/app-store-badge.svg.
      */
     stores: {
       googlePlay: {
         label: "Get it on Google Play",
         href: "https://play.google.com/store/apps/details?id=com.cngsynergy.training",
         badge: "/images/google-play-badge.svg",
+        width: 180,
+      },
+      appStore: {
+        label: "Download on the App Store",
+        href: "",
+        badge: "/images/app-store-badge.svg",
+        width: 159,
       },
     },
   },
@@ -57,8 +66,8 @@ export const prohayat = {
   /** The two rows of days under the hero. They fill in as the visitor scrolls. */
   habit: {
     days: 30,
-    fading: "One-off training, forgotten in 30 days",
-    lasting: "ProHayat™ 180, 2 minutes every day",
+    fading: "One-off briefing, fading over 30 days",
+    lasting: "ProHayat™ 180, a few minutes every day",
   },
 
   /**
@@ -130,7 +139,7 @@ export const prohayat = {
     title: "From Occasional Training to Daily Behaviour.",
     body: "Conventional training transfers knowledge. ProHayat™ 180 reinforces behaviour — every day.",
     phone: {
-      stage: "STAGE 2/8",
+      stage: "SESSION 2/6",
       day: "DAY 4",
       label: "Live Scenario",
       prompt: "Tap the safest action",
@@ -140,11 +149,11 @@ export const prohayat = {
       caption: "REAL DRIVER VIEW · 2-MIN",
     },
     summary:
-      "Every day, drivers get 3 real-world scenarios on their phone. They decide, get immediate coaching on WHY it's the right decision, and move on.",
+      "Every day, drivers answer 5 short questions on their phone. They decide, see straight away WHY the safest answer is right, and move on.",
     features: [
       "Bilingual: Bahasa Malaysia & English",
-      "Mobile-first, self-paced, 8 progressive stages",
-      "250+ scenarios covering Safety, Operations & Compliance",
+      "Mobile-first and self-paced, on Android and iPhone",
+      "Questions for each vehicle type, covering Safety, Operations & Compliance",
     ],
   },
 
@@ -160,8 +169,8 @@ export const prohayat = {
         { label: "Discipline", value: 91, tone: "orange" },
         { label: "Professionalism", value: 74, tone: "sky" },
       ],
-      stat: "124 Drivers Active",
-      change: "+ 12% this week",
+      stat: "Example dashboard",
+      change: "Updates as drivers answer",
       /** The line that shows the visitor's own answer from the phone. */
       record: {
         title: "Latest record",

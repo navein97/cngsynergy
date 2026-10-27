@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { PageHeader } from "@/components/PageHeader";
 import { PhotoBand } from "@/components/PhotoBand";
-import { PracticalSolutions } from "@/components/PracticalSolutions";
 import { about } from "@/content/about";
 
 export const metadata: Metadata = {
@@ -45,8 +44,6 @@ export default function AboutPage() {
           </dl>
         </div>
       </section>
-
-      <PracticalSolutions showButton={false} />
 
       <section className="bg-white">
         <div className="shell flex flex-col gap-8 py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">

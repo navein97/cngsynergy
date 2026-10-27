@@ -30,8 +30,7 @@ export const metadata: Metadata = {
     default: `${site.titleSuffix} – ${site.tagline}`,
     template: `%s – ${site.titleSuffix}`,
   },
-  description:
-    "CNG Synergy is a logistics consultancy in Klang, Malaysia. We help manufacturers and logistics providers optimize trucking, transport and warehouse operations.",
+  description: site.description,
   openGraph: {
     type: "website",
     siteName: site.name,

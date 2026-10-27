@@ -1,8 +1,8 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Badge, ProHayatDemo } from "@/components/ProHayatDemo";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { StoreBadges } from "@/components/StoreBadges";
 import { TrailerBand } from "@/components/TrailerBand";
 import { prohayat } from "@/content/prohayat";
 
@@ -36,6 +36,7 @@ export default function ProHayatPage() {
               <a href={getStarted.href} className="btn mt-6 bg-pd-orange text-pd-navy hover:bg-white">
                 {getStarted.label}
               </a>
+              <StoreBadges className="mt-5" />
             </div>
           </div>
 
@@ -118,20 +119,7 @@ export default function ProHayatPage() {
               {getStarted.label}
             </a>
             <p className="mt-3 text-white/75">{getStarted.note}</p>
-            <a
-              href={getStarted.stores.googlePlay.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-block"
-            >
-              <Image
-                src={getStarted.stores.googlePlay.badge}
-                alt={getStarted.stores.googlePlay.label}
-                width={180}
-                height={53}
-                unoptimized
-              />
-            </a>
+            <StoreBadges className="mt-5" />
             <div>
               <ul className="mt-6 space-y-1 text-lg">
                 <li>

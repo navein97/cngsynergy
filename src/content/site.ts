@@ -6,7 +6,10 @@
 export const site = {
   name: "CNGSYNERGY",
   url: "https://cngsynergy.com",
-  tagline: "Driving business performance through logistics excellence",
+  tagline: "Optimizing Logistics, Elevating Performance",
+  /** Default description for Google and link previews. */
+  description:
+    "CNG Synergy is a logistics solutions and innovation company in Klang, Malaysia. Logistics consultancy for trucking, transport and warehouse operations, and the ProHayat™ 180 driver app.",
   titleSuffix: "CNGSYNERGY – Malaysia Transportation and Warehouse",
   /** Customer service line, shown on every page. */
   phone: {

@@ -4,28 +4,28 @@ export const about = {
   title: "About Us",
 
   whyChoose: {
-    title: "Why Choose CNGSynergy?",
-    body: "CNG Synergy is driven by a results-oriented, client-focused approach. Our deep expertise in logistics ensures that we understand the unique challenges you face and provide customized solutions that deliver measurable improvements. Our hands-on, consultative process means we don’t just advise—we work alongside you to achieve better performance, reduced costs, and greater efficiency.",
+    title: "Who We Are",
+    body: "CNG Synergy is a logistics solutions and innovation company based in Klang. We bring decades of hands-on experience in Malaysian trucking and warehousing, and we work alongside our clients to cut costs, improve reliability and raise performance. That same experience now goes into building our own digital products, starting with ProHayat™ 180.",
   },
 
   aim: {
-    title: "Our Aim",
+    title: "What Drives Us",
     items: [
       {
-        title: "Optimizing Logistics",
-        body: "Streamlining the flow of goods to reduce disruptions and inventory costs, ensuring timely and efficient delivery.",
+        title: "Industry Depth",
+        body: "We have run and improved real trucking and warehouse operations, so our advice works on the ground.",
       },
       {
-        title: "Connecting the Supply Chain",
-        body: "Strengthening the interfaces between manufacturers, transporters, and warehouses to improve coordination and performance.",
+        title: "Strategic Perspective",
+        body: "We look at the whole chain, from manufacturer to transporter to warehouse, and fix the links between them.",
       },
       {
-        title: "Sustainable Growth",
-        body: "Offering innovative solutions that support long-term growth while adopting sustainable practices.",
+        title: "Purposeful Innovation",
+        body: "We turn what we see in the field into practical tools. ProHayat™ 180 is the first, built for commercial drivers.",
       },
       {
         title: "Continuous Improvement",
-        body: "Sharing best practices and fostering continuous learning to enhance operations and prepare businesses for future challenges.",
+        body: "We share best practices with your team, so the gains last after we leave.",
       },
     ],
   },
