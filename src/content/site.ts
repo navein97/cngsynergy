@@ -14,12 +14,9 @@ export const site = {
   /** The same contact labels are used on every page. */
   contactLabels: {
     phone: "Office / Fixed Line",
-    whatsapp: "Mobile / WhatsApp",
     email: "Email",
     address: "Address",
   },
-  /** WhatsApp number as shown on the site (Jenna's mobile). */
-  whatsappDisplay: "+60 19-218 2916",
   /** Customer service line, shown on every page. */
   phone: {
     display: "03-8687 8460",
@@ -29,8 +26,6 @@ export const site = {
   email: "enquiry@cngsynergy.com",
   /** Inbox that receives contact form messages. Not shown on the site. */
   formInbox: "chandra@cngsynergy.com",
-  /** WhatsApp goes to Jenna's mobile; the office line above cannot take WhatsApp. */
-  whatsappUrl: "https://wa.me/60192182916",
   address: [
     "No. B-5-7 A, Block B,",
     "Pusat Perniagaan Prima Bayu Klang,",

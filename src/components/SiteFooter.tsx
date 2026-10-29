@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Icon, WhatsAppIcon } from "@/components/Icon";
+import { Icon } from "@/components/Icon";
 import { navigation, site } from "@/content/site";
 
 export function SiteFooter() {
@@ -34,7 +34,7 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="mt-12 grid gap-10 border-t border-white/15 pt-12 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.1fr_1.5fr]">
+        <div className="mt-12 grid gap-10 border-t border-white/15 pt-12 sm:grid-cols-[1fr_1.2fr_1.6fr]">
           <div>
             <h3 className="flex items-center gap-2.5 font-display text-xl font-semibold text-white">
               <Icon name="phone" className="text-signal" />
@@ -46,22 +46,6 @@ export function SiteFooter() {
                 className="underline-offset-4 hover:text-white hover:underline"
               >
                 {site.phone.display}
-              </a>
-            </p>
-          </div>
-          <div>
-            <h3 className="flex items-center gap-2.5 font-display text-xl font-semibold text-white">
-              <WhatsAppIcon />
-              {site.contactLabels.whatsapp}
-            </h3>
-            <p className="mt-3">
-              <a
-                href={site.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline-offset-4 hover:text-white hover:underline"
-              >
-                {site.whatsappDisplay}
               </a>
             </p>
           </div>

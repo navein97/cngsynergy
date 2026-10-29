@@ -71,65 +71,63 @@ export const prohayat = {
   },
 
   /**
-   * The vehicle buttons and the scenario each one loads into the phone.
-   * These four are sample scenarios. Replace them with real ones from the app.
+   * The vehicle buttons and the question each one loads into the phone.
+   * These are real questions from the app (batch 1), one per vehicle type.
    * Mark exactly one option per scenario as `correct: true`.
-   * `scene` picks the drawing: "container", "curtain", "cargo" or "junction".
    */
   vehicles: {
-    label: "Pick your vehicle and try a scenario",
+    label: "Pick your vehicle and try a real question",
     scenarios: [
       {
         vehicle: "Container Haulage",
-        scene: "container",
         question:
-          "You've just collected a laden 40-foot container. One twist lock is not fully seated. What is your safest action?",
+          "You are inside a terminal yard. A marshal signals you to hold while equipment moves in your path.",
         options: [
-          { text: "Drive off slowly and check it at the first stop", correct: false },
-          { text: "Stop and lock all four twist locks before moving", correct: true },
-          { text: "Carry on, the container's weight will hold it", correct: false },
+          { text: "Ease forward slightly to improve visibility", correct: false },
+          { text: "Remain stationary until the marshal signals to proceed", correct: true },
+          { text: "Hold briefly, then advance once equipment clears", correct: false },
+          { text: "Follow the vehicle ahead if it begins moving", correct: false },
         ],
         coaching:
-          "A container that isn't locked down can shift or tip on the first corner. Check all four twist locks before the wheels turn.",
+          "Follow marshal instructions and keep distance from operating equipment.",
       },
       {
         vehicle: "Curtain Side / Box Trailers",
-        scene: "curtain",
-        question:
-          "Strong crosswinds on the highway and your curtain-sider is running empty. What is your safest action?",
+        question: "While loading, you notice several cartons marked “DO NOT STACK.”",
         options: [
-          { text: "Keep your speed up to get through the wind faster", correct: false },
-          { text: "Follow close behind another lorry for shelter", correct: false },
-          { text: "Slow down, hold the wheel firmly and leave more space", correct: true },
+          { text: "Stack only one lightweight carton above them", correct: false },
+          { text: "Place them on top of stronger cartons for stability", correct: false },
+          { text: "Keep those cartons free from additional loads", correct: true },
+          { text: "Double stack them if space is limited", correct: false },
         ],
         coaching:
-          "An empty curtain-sider catches the wind like a sail. A lower speed gives you time to correct when a gust hits.",
+          "Always follow the stacking instructions printed on the packaging to prevent cargo damage.",
       },
       {
         vehicle: "General Cargo",
-        scene: "cargo",
         question:
-          "Your cargo is loaded but one stack is not strapped down, and you are running late. What is your safest action?",
+          "You are approaching a busy loading dock where other lorries are waiting to use adjacent bays.",
         options: [
-          { text: "Strap the stack down before you leave", correct: true },
-          { text: "Leave now and drive gently", correct: false },
-          { text: "Push it against the other stacks and go", correct: false },
+          { text: "Reverse slowly until the bumper contacts the rubber stop", correct: true },
+          { text: "Reverse before other lorries can use the bay", correct: false },
+          { text: "Wait across the neighbouring bay until unloading starts", correct: false },
+          { text: "Stop well short of the dock to avoid touching the rubber stop", correct: false },
         ],
         coaching:
-          "Loads move under braking and cornering. A few minutes of strapping prevents damaged goods and cargo falling onto the road.",
+          "Accurate docking protects loading equipment, while securing the vehicle and avoiding obstruction supports safe and efficient dock operations.",
       },
       {
         vehicle: "Urban Deliveries (Vans & B2C)",
-        scene: "junction",
         question:
-          "You're approaching a blind junction in the rain. What is your safest action?",
+          "At a site checkpoint, you notice a vehicle defect just before being cleared to proceed.",
         options: [
-          { text: "Speed up to clear the junction quickly", correct: false },
-          { text: "Slow down, scan both directions, proceed when clear", correct: true },
-          { text: "Honk and continue at current speed", correct: false },
+          { text: "Proceed through the checkpoint and report the defect afterwards", correct: false },
+          { text: "Move past the checkpoint and assess the defect", correct: false },
+          { text: "Request guidance while remaining in the queue", correct: false },
+          { text: "Stop at the checkpoint and report the defect immediately", correct: true },
         ],
         coaching:
-          "Wet roads lengthen your stopping distance and a blind junction hides what's coming. Slowing down buys you time to see and stop.",
+          "Reporting defects at checkpoints prevents unsafe entry into controlled zones.",
       },
     ],
   },
@@ -139,10 +137,9 @@ export const prohayat = {
     title: "From Occasional Training to Daily Behaviour.",
     body: "Conventional training transfers knowledge. ProHayat™ 180 reinforces behaviour — every day.",
     phone: {
-      stage: "SESSION 2/6",
-      day: "DAY 4",
-      label: "Live Scenario",
-      prompt: "Tap the safest action",
+      batch: "Batch 1",
+      question: "Question 1/5",
+      accuracy: "ACCURACY",
       correct: "Correct.",
       coached: "Not the safest choice.",
       next: "Try the next vehicle",

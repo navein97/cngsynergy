@@ -71,8 +71,8 @@ paragraph; they are no longer used and can be deleted.
 The vehicle buttons, the phone and the dashboard are `src/components/ProHayatDemo.tsx`.
 The scenarios are in `src/content/prohayat.ts` under `vehicles.scenarios`: one per
 vehicle button, each with a question, options (exactly one `correct: true`), the
-coaching text and a `scene` drawing. To add a vehicle, add a scenario there. A new
-`scene` name also needs a drawing in `SceneDrawing` inside `ProHayatDemo.tsx`.
+coaching text. They are real questions from the app, and the phone copies the app's
+quiz screen. To add a vehicle, add a scenario there.
 
 ## Adding a new page
 

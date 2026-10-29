@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { Icon, WhatsAppIcon } from "@/components/Icon";
-import { contact } from "@/content/contact";
+import { Icon } from "@/components/Icon";
 import { practicalSolutions } from "@/content/home";
 import { site } from "@/content/site";
 
 /**
  * Closing contact block on the home page (text in `practicalSolutions`, src/content/home.ts).
- * `showDirect` adds the WhatsApp and phone buttons next to "Contact us".
+ * `showDirect` adds the phone and email buttons next to "Contact us".
  */
 export function PracticalSolutions({
   showButton = true,
@@ -31,15 +30,6 @@ export function PracticalSolutions({
               </Link>
               {showDirect && (
                 <>
-                  <a
-                    href={site.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-whatsapp"
-                  >
-                    <WhatsAppIcon />
-                    {contact.whatsappLabel}
-                  </a>
                   <a href={site.phone.href} className="btn btn-outline-light">
                     <Icon name="phone" width={20} height={20} />
                     {site.phone.display}

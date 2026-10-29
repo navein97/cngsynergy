@@ -20,11 +20,8 @@ const barTone = {
   sky: "bg-pd-sky",
 } as const;
 
-type Scene = (typeof prohayat.vehicles.scenarios)[number]["scene"];
-
 type Scenario = {
   vehicle: string;
-  scene: Scene;
   question: string;
   options: readonly { text: string; correct: boolean }[];
   coaching: string;
@@ -121,32 +118,32 @@ export function ProHayatDemo() {
           className="flex scroll-mt-[calc(var(--header-h)+1rem)] flex-col items-center rounded-2xl border border-pd-line bg-white px-4 py-8 sm:py-10"
         >
           <div className="w-full max-w-[20rem] rounded-[2.25rem] bg-pd-navy p-2.5 shadow-[0_18px_40px_-18px_rgb(5_28_51/0.55)]">
-            <div className="relative rounded-[1.75rem] bg-white px-4 pb-5 pt-8">
+            {/* Same layout as the quiz screen in the app */}
+            <div className="relative rounded-[1.75rem] bg-pd-surface px-3.5 pb-5 pt-8">
               <span className="absolute left-1/2 top-2.5 h-1.5 w-16 -translate-x-1/2 rounded-full bg-pd-navy" />
-              <div className="flex justify-between text-xs font-semibold tracking-wide text-pd-navy/60">
-                <span>{drivers.phone.stage}</span>
-                <span>{drivers.phone.day}</span>
+              <div className="relative flex items-center justify-center">
+                <Icon name="arrow" width={18} height={18} className="absolute left-0 rotate-180" />
+                <span className="text-[0.9375rem]">{drivers.phone.batch}</span>
               </div>
-              <p className="mt-3 text-xs font-semibold tracking-wide text-pd-orange">
-                {drivers.phone.label}: {scenario.vehicle}
+              <div className="-mx-3.5 mt-3 flex items-center justify-between border-b border-pd-line px-3.5 pb-2.5 text-[0.8125rem]">
+                <span>{drivers.phone.question}</span>
+                <span className="text-[0.6875rem] tracking-wide">
+                  {drivers.phone.accuracy}: <strong>{answered && pickedCorrect ? 100 : 0}%</strong>
+                </span>
+              </div>
+              <p className="mt-3 rounded-xl bg-white px-3.5 py-3 text-[0.9375rem] leading-snug shadow-[0_2px_8px_rgb(5_28_51/0.08)]">
+                {scenario.question}
               </p>
-              <p className="mt-1 font-semibold leading-snug">{scenario.question}</p>
-
-              <SceneDrawing scene={scenario.scene} />
-
-              <p className="mt-3 text-[0.8125rem] font-semibold text-pd-navy/60">
-                {drivers.phone.prompt}
-              </p>
-              <ul className="mt-2 space-y-2">
+              <ul className="mt-3 space-y-2">
                 {scenario.options.map((option, index) => {
                   const chosen = picked === index;
                   const tone = !answered
-                    ? "cursor-pointer border-pd-line hover:border-pd-navy"
+                    ? "cursor-pointer border-transparent bg-white shadow-[0_2px_8px_rgb(5_28_51/0.08)] hover:border-pd-navy"
                     : option.correct
                       ? "border-pd-green bg-pd-green-soft font-semibold"
                       : chosen
                         ? "border-pd-orange bg-pd-orange-soft font-semibold"
-                        : "border-pd-line opacity-55";
+                        : "border-transparent bg-white opacity-55";
                   return (
                     <li key={option.text}>
                       <button
@@ -154,22 +151,15 @@ export function ProHayatDemo() {
                         aria-pressed={chosen}
                         aria-disabled={answered}
                         onClick={() => answer(index)}
-                        className={`flex min-h-11 w-full items-start gap-2.5 rounded-lg border-2 px-3 py-2.5 text-left text-sm leading-snug transition-colors ${tone}`}
+                        className={`flex min-h-11 w-full items-center gap-3 rounded-xl border-2 px-3 py-2.5 text-left text-sm leading-snug transition-colors ${tone}`}
                       >
-                        <span
-                          className={`mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border-2 ${
-                            answered && option.correct
-                              ? "border-pd-green bg-pd-green text-white"
-                              : chosen
-                                ? "border-pd-orange bg-pd-orange text-white"
-                                : "border-pd-navy/30"
-                          }`}
-                        >
-                          {answered && option.correct && (
-                            <Icon name="check" width={10} height={10} strokeWidth={4} />
-                          )}
-                          {chosen && !option.correct && (
-                            <Icon name="close" width={9} height={9} strokeWidth={4} />
+                        <span className="w-3 shrink-0 text-center">
+                          {answered && option.correct ? (
+                            <Icon name="check" width={14} height={14} strokeWidth={3} className="text-pd-green" />
+                          ) : chosen && !option.correct ? (
+                            <Icon name="close" width={12} height={12} strokeWidth={3} />
+                          ) : (
+                            String.fromCharCode(65 + index)
                           )}
                         </span>
                         {option.text}
@@ -312,96 +302,5 @@ function FeatureList({ items }: { items: readonly string[] }) {
         ))}
       </ul>
     </ScrollProgress>
-  );
-}
-
-/** Small drawing at the top of each scenario. Add a new one here for a new `scene`. */
-function SceneDrawing({ scene }: { scene: Scene }) {
-  return (
-    <svg viewBox="0 0 240 96" className="mt-3 block w-full rounded-lg" aria-hidden="true">
-      <rect width="240" height="96" className="fill-pd-line" />
-      {scene === "junction" ? (
-        <>
-          <rect x="96" width="48" height="96" className="fill-pd-navy/60" />
-          <rect y="26" width="240" height="40" className="fill-pd-navy/60" />
-          <path d="M120 70v26" stroke="white" strokeWidth="2" strokeDasharray="6 5" />
-          <path d="M0 46h92m56 0h92" stroke="white" strokeWidth="2" strokeDasharray="8 6" />
-          <rect x="112" y="74" width="16" height="20" rx="3" className="fill-pd-orange" />
-          <path
-            d="m20 6-3 8m30-10-3 8m34-4-3 8m94-10-3 8m30-6-3 8m28-10-3 8M34 74l-3 8m30-6-3 8m116-8-3 8m32-6-3 8"
-            className="stroke-pd-sky"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </>
-      ) : (
-        <>
-          {/* Road */}
-          <rect y="76" width="240" height="20" className="fill-pd-navy/60" />
-          <path d="M0 87h240" stroke="white" strokeWidth="2" strokeDasharray="10 8" />
-
-          {scene === "container" && (
-            <>
-              <rect x="38" y="30" width="122" height="36" rx="1.5" className="fill-pd-orange" />
-              <path
-                d="M52 34v28m12-28v28m12-28v28m12-28v28m12-28v28m12-28v28m12-28v28m12-28v28m12-28v28"
-                stroke="white"
-                strokeOpacity="0.45"
-                strokeWidth="2"
-              />
-              <circle cx="158" cy="66" r="6" fill="white" className="stroke-pd-navy" strokeWidth="2.5" />
-            </>
-          )}
-          {scene === "curtain" && (
-            <>
-              <rect x="38" y="28" width="122" height="38" rx="1.5" className="fill-pd-sky" />
-              <path
-                d="M52 28q4 19 0 38m16-38q4 19 0 38m16-38q4 19 0 38m16-38q4 19 0 38m16-38q4 19 0 38m16-38q4 19 0 38m16-38q4 19 0 38"
-                fill="none"
-                stroke="white"
-                strokeOpacity="0.6"
-                strokeWidth="1.5"
-              />
-              <path
-                d="M4 22h24M10 36h20M2 50h26"
-                className="stroke-pd-navy"
-                strokeOpacity="0.5"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-            </>
-          )}
-          {scene === "cargo" && (
-            <>
-              <rect x="44" y="42" width="26" height="24" className="fill-pd-orange" />
-              <rect x="72" y="34" width="28" height="32" className="fill-pd-blue" />
-              <rect x="102" y="46" width="24" height="20" className="fill-pd-orange" />
-              <rect
-                x="130"
-                y="36"
-                width="24"
-                height="30"
-                transform="rotate(9 142 66)"
-                fill="white"
-                className="stroke-pd-navy"
-                strokeWidth="2"
-                strokeDasharray="4 3"
-              />
-            </>
-          )}
-
-          {/* Trailer bed, cab and wheels */}
-          <rect x="34" y="66" width="132" height="5" className="fill-pd-navy" />
-          <path d="M170 71V46a4 4 0 0 1 4-4h14l14 14v15Z" className="fill-pd-navy" />
-          <path d="M187 47v10h12Z" className="fill-pd-line" />
-          <g className="fill-pd-navy" stroke="white" strokeWidth="2">
-            <circle cx="56" cy="75" r="7" />
-            <circle cx="74" cy="75" r="7" />
-            <circle cx="148" cy="75" r="7" />
-            <circle cx="188" cy="75" r="7" />
-          </g>
-        </>
-      )}
-    </svg>
   );
 }

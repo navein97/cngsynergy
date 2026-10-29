@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
-import { Icon, WhatsAppIcon } from "@/components/Icon";
+import { Icon } from "@/components/Icon";
 import { PageHeader } from "@/components/PageHeader";
 import { contact } from "@/content/contact";
 import { site } from "@/content/site";
@@ -21,7 +21,7 @@ export default function ContactPage() {
           <div className="flex gap-4">
             <Icon name="phone" width={30} height={30} className="mt-1 shrink-0 text-signal" />
             <div>
-              <dt className="display-3 text-ink">Phone Number</dt>
+              <dt className="display-3 text-ink">{site.contactLabels.phone}</dt>
               <dd className="mt-1.5 text-lg">
                 <a href={site.phone.href} className="underline-offset-4 hover:underline">
                   {site.phone.display}
@@ -32,7 +32,7 @@ export default function ContactPage() {
           <div className="flex gap-4">
             <Icon name="mail" width={30} height={30} className="mt-1 shrink-0 text-signal" />
             <div className="min-w-0">
-              <dt className="display-3 text-ink">E-Mail</dt>
+              <dt className="display-3 text-ink">{site.contactLabels.email}</dt>
               <dd className="mt-1.5 break-words text-lg">
                 <a href={`mailto:${site.email}`} className="underline-offset-4 hover:underline">
                   {site.email}
@@ -57,14 +57,9 @@ export default function ContactPage() {
           <div>
             <h2 className="display-2 text-ink">{contact.heading}</h2>
             <p className="mt-6 max-w-[58ch] text-lg leading-relaxed">{contact.body}</p>
-            <a
-              href={site.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp mt-8"
-            >
-              <WhatsAppIcon />
-              {contact.whatsappLabel}
+            <a href={site.phone.href} className="btn btn-primary mt-8">
+              <Icon name="phone" width={20} height={20} />
+              {contact.callLabel}: {site.phone.display}
             </a>
           </div>
           <ContactForm />
