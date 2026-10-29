@@ -51,7 +51,7 @@ export function SiteFooter() {
           </div>
           <div>
             <h3 className="flex items-center gap-2.5 font-display text-xl font-semibold text-white">
-              <WhatsAppIcon />
+              <WhatsAppIcon className="text-signal" />
               {site.contactLabels.whatsapp}
             </h3>
             <p className="mt-3">
