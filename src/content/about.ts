@@ -5,7 +5,7 @@ export const about = {
 
   whyChoose: {
     title: "Who We Are",
-    body: "CNG Synergy is a logistics solutions and innovation company based in Klang. We bring decades of hands-on experience in Malaysian trucking and warehousing, and we work alongside our clients to cut costs, improve reliability and raise performance. That same experience now goes into building our own digital products, starting with ProHayat™ 180.",
+    body: "CNG Synergy provides logistics performance solutions from our base in Klang. Our team brings over 25 years of hands-on experience in Malaysian trucking and warehousing, and we work alongside our clients to cut costs, improve reliability and raise performance. We also put that experience into practical digital tools, such as ProHayat™ 180.",
   },
 
   aim: {
@@ -20,8 +20,8 @@ export const about = {
         body: "We look at the whole chain, from manufacturer to transporter to warehouse, and fix the links between them.",
       },
       {
-        title: "Purposeful Innovation",
-        body: "We turn what we see in the field into practical tools. ProHayat™ 180 is the first, built for commercial drivers.",
+        title: "Practical Tools",
+        body: "We turn what we see in the field into tools that help, like ProHayat™ 180 for commercial drivers.",
       },
       {
         title: "Continuous Improvement",

@@ -44,6 +44,10 @@ export function PracticalSolutions({
                     <Icon name="phone" width={20} height={20} />
                     {site.phone.display}
                   </a>
+                  <a href={`mailto:${site.email}`} className="btn btn-outline-light">
+                    <Icon name="mail" width={20} height={20} />
+                    {site.email}
+                  </a>
                 </>
               )}
             </div>

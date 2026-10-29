@@ -3,54 +3,51 @@
  * Wrap a phrase in **double asterisks** to make it bold.
  *
  * The page has five sections, in this order:
- * hero, what we do, ProHayat 180, why CNG Synergy, contact.
+ * hero, our services, why CNG Synergy, about, contact.
  */
 
 export const home = {
   hero: {
-    eyebrow: "Logistics Solutions & Innovation",
-    title: "Turning Logistics Complexity into Competitive Advantage",
+    title: "Logistics Performance Solutions",
     tagline:
-      "Practical expertise for trucking and warehouse operations, and our own driver app, ProHayat™ 180.",
-    primary: { label: "Our Solutions", href: "/our-service/" },
-    secondary: { label: "Get the App", href: "/prohayat-180/" },
+      "Practical expertise in transportation, distribution and warehousing to improve operational efficiency, cost effectiveness and business performance.",
+    primary: { label: "Explore Our Services", href: "/our-service/" },
+    secondary: { label: "Contact Us", href: "/contact-us/" },
     flow: ["Manufacturers", "Transporters", "Warehouses"],
     flowDescription:
       "Goods moving from manufacturers, through transporters, to warehouses.",
   },
 
-  /** Three cards. Each links to the full details on /our-service/. */
-  whatWeDo: {
-    title: "What We Do",
-    intro: "We help logistics businesses run faster, safer and at lower cost.",
-    link: "See all services",
+  /** Four equal cards. Keep each description about the same length. */
+  services: {
+    title: "Our Services",
+    intro: "Four ways we help logistics businesses perform better.",
     items: [
       {
         icon: "truck",
         title: "Transportation & Distribution",
-        body: "Fleet use, route planning and delivery reliability, so your trucks do more with less.",
+        body: "Better fleet use, route planning and delivery reliability, at lower cost.",
+        link: { label: "Learn more", href: "/our-service/" },
       },
       {
         icon: "warehouse",
         title: "Warehousing & Operations",
         body: "Layouts, workflows and inventory handling that save space and cut lead times.",
+        link: { label: "Learn more", href: "/our-service/" },
       },
       {
         icon: "strategy",
-        title: "Strategic Advisory",
-        body: "Logistics consultancy and hands-on guidance, from planning to daily operations.",
+        title: "Logistics Advisory & Capability Development",
+        body: "Hands-on guidance and team development, from planning to daily operations.",
+        link: { label: "Learn more", href: "/our-service/" },
+      },
+      {
+        icon: "advisory",
+        title: "ProHayat™ 180",
+        body: "A digital solution that builds safer habits and discipline in commercial drivers.",
+        link: { label: "Learn more", href: "/prohayat-180/" },
       },
     ],
-  },
-
-  /** The ProHayat 180 feature. The store links come from src/content/prohayat.ts. */
-  innovation: {
-    eyebrow: "Our Innovation",
-    name: "ProHayat™ 180",
-    title: "Better drivers, every day.",
-    body: "Our own app for commercial drivers. A few minutes a day builds safer habits and better compliance, and managers see each driver’s performance in one place.",
-    live: "Now live on Google Play and the App Store.",
-    link: "Explore ProHayat™ 180",
   },
 
   whyUs: {
@@ -58,20 +55,26 @@ export const home = {
     reasons: [
       {
         icon: "truck",
-        title: "Industry Depth",
-        body: "Decades of **hands-on experience** in Malaysian trucking and warehousing. We know how the work is really done.",
+        title: "Operational Experience",
+        body: "We have run and improved **real trucking and warehouse operations**, so our advice works on the ground.",
       },
       {
         icon: "strategy",
-        title: "Strategic Clarity",
-        body: "Clear, **practical plans** your team can act on, not reports that sit on a shelf.",
+        title: "Practical Problem-Solving",
+        body: "We find what is slowing you down and give you **clear steps your team can act on**.",
       },
       {
-        icon: "advisory",
-        title: "Purposeful Innovation",
-        body: "We build tools for real problems on the ground, starting with **ProHayat™ 180**.",
+        icon: "factory",
+        title: "Performance Focus",
+        body: "Everything we do is measured by one thing: **better results for your operations**.",
       },
     ],
+  },
+
+  about: {
+    title: "About CNG Synergy",
+    body: "Based in Klang, our team brings over 25 years of hands-on experience in Malaysian logistics. We work alongside manufacturers, transporters and warehouse operators to cut costs, improve reliability and raise performance.",
+    link: { label: "More about us", href: "/about-us/" },
   },
 } as const;
 

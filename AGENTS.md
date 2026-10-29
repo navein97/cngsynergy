@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 # CNG Synergy website: project guide
 
-Marketing site for CNG Synergy (logistics solutions and innovation, Klang). Next.js App Router,
+Marketing site for CNG Synergy (logistics performance solutions, Klang). Next.js App Router,
 TypeScript, Tailwind CSS v4, deployed on Vercel at cngsynergy.com.
 
 ## Where things live
@@ -59,8 +59,8 @@ page only. There are no animation libraries. One small component does the work:
   everything shows in its finished state. Keep it that way: never hide content
   behind an effect.
 
-The home page has five sections: hero, what we do, ProHayat 180, why CNG Synergy
-and contact. Their text is in `src/content/home.ts`. The App Store and Google Play
+The home page has five sections: hero, our services (four equal cards, one is
+ProHayat 180), why CNG Synergy, about and contact. Their text is in `src/content/home.ts`. The App Store and Google Play
 badges are `src/components/StoreBadges.tsx`; links are in `prohayat.getStarted.stores`.
 The hero road (`RouteDiagram.tsx`) is a static drawing.
 `Journey.tsx` and `LitText.tsx` are the old scroll-jacking road and word-by-word
