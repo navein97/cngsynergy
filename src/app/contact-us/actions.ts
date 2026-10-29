@@ -11,7 +11,7 @@ export type ContactState = {
 };
 
 const UNAVAILABLE =
-  "Your message could not be sent. Please call or email us instead.";
+  "Your message could not be sent. Please call, WhatsApp or email us instead.";
 
 function read(formData: FormData, key: string, maxLength: number) {
   const value = formData.get(key);

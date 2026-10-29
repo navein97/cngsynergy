@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
-import { Icon } from "@/components/Icon";
+import { Icon, WhatsAppIcon } from "@/components/Icon";
 import { PageHeader } from "@/components/PageHeader";
 import { contact } from "@/content/contact";
 import { site } from "@/content/site";
@@ -57,10 +57,21 @@ export default function ContactPage() {
           <div>
             <h2 className="display-2 text-ink">{contact.heading}</h2>
             <p className="mt-6 max-w-[58ch] text-lg leading-relaxed">{contact.body}</p>
-            <a href={site.phone.href} className="btn btn-primary mt-8">
-              <Icon name="phone" width={20} height={20} />
-              {contact.callLabel}: {site.phone.display}
-            </a>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={site.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp"
+              >
+                <WhatsAppIcon />
+                {site.whatsappLabel}
+              </a>
+              <a href={site.phone.href} className="btn btn-primary">
+                <Icon name="phone" width={20} height={20} />
+                {contact.callLabel}: {site.phone.display}
+              </a>
+            </div>
           </div>
           <ContactForm />
         </div>

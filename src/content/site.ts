@@ -13,10 +13,17 @@ export const site = {
   titleSuffix: "CNGSYNERGY – Malaysia Transportation and Warehouse",
   /** The same contact labels are used on every page. */
   contactLabels: {
-    phone: "Office / Fixed Line",
+    phone: "Phone",
+    whatsapp: "WhatsApp",
     email: "Email",
     address: "Address",
   },
+  /**
+   * WhatsApp goes to Jenna's mobile. The number is never shown on the site,
+   * only a "WhatsApp us" button. The 03 line cannot take WhatsApp.
+   */
+  whatsappUrl: "https://wa.me/60192182916",
+  whatsappLabel: "WhatsApp us",
   /** Customer service line, shown on every page. */
   phone: {
     display: "03-8687 8460",

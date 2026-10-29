@@ -111,7 +111,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. Contact: office line and email */}
+      {/* 5. Contact: WhatsApp, phone and email */}
       <PracticalSolutions showDirect />
     </>
   );
