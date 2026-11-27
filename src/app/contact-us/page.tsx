@@ -67,7 +67,7 @@ export default function ContactPage() {
                 <WhatsAppIcon />
                 {site.whatsappLabel}
               </a>
-              <a href={site.phone.href} className="btn btn-primary">
+              <a href={site.phone.href} className="btn btn-ink">
                 <Icon name="phone" width={20} height={20} />
                 {contact.callLabel}: {site.phone.display}
               </a>

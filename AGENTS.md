@@ -34,7 +34,7 @@ The old `/prodrive-180/` address redirects to `/prohayat-180/` (see `next.config
 - Copy goes in `src/content`, never hard-coded in page files.
 - Use the colour names from `globals.css` (`bg-ink`, `text-route`, `bg-dock`...). Do not add raw hex values in components.
 - `signal` red is for marks and large type. For buttons and small red text use `signal-deep`, which passes contrast.
-- Headings use the `display-1`, `display-2`, `display-3` classes. Buttons use `btn` plus `btn-primary`, `btn-outline-light` or `btn-whatsapp`.
+- Headings use the `display-1`, `display-2`, `display-3` classes. Buttons use `btn` plus `btn-primary`, `btn-outline-light`, `btn-whatsapp` or `btn-ink` (navy, for secondary actions like Call us).
 - Wrap section content in `<div className="shell">` for the standard page width.
 - Dark sections get the `on-dark` class so keyboard focus outlines stay visible.
 - The logo PNG has white lettering, so it only goes on `bg-ink`.

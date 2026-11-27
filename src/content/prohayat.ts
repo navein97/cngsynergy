@@ -22,8 +22,6 @@ export const prohayat = {
     /**
      * Official store badges for drivers (src/components/StoreBadges.tsx).
      * A store with an empty `href` is hidden.
-     * TODO: paste the App Store link into appStore.href and add Apple's
-     * official badge as public/images/app-store-badge.svg.
      */
     stores: {
       googlePlay: {
@@ -34,7 +32,7 @@ export const prohayat = {
       },
       appStore: {
         label: "Download on the App Store",
-        href: "",
+        href: "https://apps.apple.com/my/app/prohayat-180/id6822137842",
         badge: "/images/app-store-badge.svg",
         width: 159,
       },

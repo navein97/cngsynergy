@@ -178,6 +178,13 @@
     border-color: var(--color-white);
     background: rgb(255 255 255 / 0.08);
   }
+  .btn-ink {
+    background: var(--color-ink);
+    color: var(--color-white);
+  }
+  .btn-ink:hover {
+    background: var(--color-ink-raised);
+  }
   .btn-whatsapp {
     background: #0b7a43;
     color: var(--color-white);
